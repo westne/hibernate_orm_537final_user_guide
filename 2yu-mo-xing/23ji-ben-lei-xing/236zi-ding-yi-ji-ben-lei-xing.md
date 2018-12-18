@@ -150,19 +150,21 @@ metadataBuilder.applyBasicType( BitSetType.INSTANCE );
 @Entity(name = "Product")
 public static class Product {
 
-	@Id
-	private Integer id;
+    @Id
+    private Integer id;
 
-	@Type( type = "bitset" )
-	private BitSet bitSet;
+    @Type( type = "bitset" )
+    private BitSet bitSet;
 
-	public Integer getId() {
-		return id;
-	}
+    public Integer getId() {
+        return id;
+    }
 
-	//Getters and setters are omitted for brevity
+    //Getters and setters are omitted for brevity
 }
 ```
+
+另外，你可以使用@TypeDef，并且跳过注册阶段：
 
 
 
