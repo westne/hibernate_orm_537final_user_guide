@@ -273,23 +273,29 @@ public static class Caption {
 
 并且我们有一个`AttributeConverter`来处理`Caption`Java对象：
 
-###### 示例27.`Caption `Java对象属性转换器
+###### 示例27.`Caption`Java对象属性转换器
 
 ```java
 public static class CaptionConverter
-		implements AttributeConverter<Caption, String> {
+        implements AttributeConverter<Caption, String> {
 
-	@Override
-	public String convertToDatabaseColumn(Caption attribute) {
-		return attribute.getText();
-	}
+    @Override
+    public String convertToDatabaseColumn(Caption attribute) {
+        return attribute.getText();
+    }
 
-	@Override
-	public Caption convertToEntityAttribute(String dbData) {
-		return new Caption( dbData );
-	}
+    @Override
+    public Caption convertToEntityAttribute(String dbData) {
+        return new Caption( dbData );
+    }
 }
 ```
+
+传统上，在引用Caption实体属性时，只能使用dbData Caption表示，在本例中是String。
+
+###### 示例28.使用DB数据表示通过Caption属性进行筛选
+
+
 
 
 
