@@ -156,39 +156,57 @@ public enum Gender {
 @Entity(name = "Person")
 public static class Person {
 
-	@Id
-	private Long id;
+    @Id
+    private Long id;
 
-	private String name;
+    private String name;
 
-	@Convert( converter = GenderConverter.class )
-	public Gender gender;
+    @Convert( converter = GenderConverter.class )
+    public Gender gender;
 
-	//Getters and setters are omitted for brevity
+    //Getters and setters are omitted for brevity
 
 }
 
 @Converter
 public static class GenderConverter
-		implements AttributeConverter<Gender, Character> {
+        implements AttributeConverter<Gender, Character> {
 
-	public Character convertToDatabaseColumn( Gender value ) {
-		if ( value == null ) {
-			return null;
-		}
+    public Character convertToDatabaseColumn( Gender value ) {
+        if ( value == null ) {
+            return null;
+        }
 
-		return value.getCode();
-	}
+        return value.getCode();
+    }
 
-	public Gender convertToEntityAttribute( Character value ) {
-		if ( value == null ) {
-			return null;
-		}
+    public Gender convertToEntityAttribute( Character value ) {
+        if ( value == null ) {
+            return null;
+        }
 
-		return Gender.fromCode( value );
-	}
+        return Gender.fromCode( value );
+    }
 }
 ```
+
+这里，gender列被定义为CHAR类型，并将保存：
+
+###### `NULL`
+
+空值
+
+###### `“M”`
+
+男性枚举
+
+###### `“F”`
+
+女性枚举
+
+有关使用`AttributeConverters`的详细信息，请参阅[JPA 2.1属性转换器](http://docs.jboss.org/hibernate/orm/current/userguide/html_single/Hibernate_User_Guide.html#basic-jpa-convert)部分。
+
+> JPA明确地禁止使用带有标记为`@Enumerated`的属性的AttributeConverter。因此，如果使用AttributeConverter方法，请确保不要将属性标记为`@Enumerated`。
 
 
 
