@@ -112,5 +112,41 @@ INSERT INTO Phone (phone_number, phone_type, id)
 VALUES ('123-456-78990', 'MOBILE', 1)
 ```
 
+#### 属性转换器
+
+让我们考虑下面的Gender枚举，它使用“M”和“F”代码存储它的值。
+
+###### 示例23.使用自定义构造函数枚举
+
+```java
+public enum Gender {
+
+    MALE( 'M' ),
+    FEMALE( 'F' );
+
+    private final char code;
+
+    Gender(char code) {
+        this.code = code;
+    }
+
+    public static Gender fromCode(char code) {
+        if ( code == 'M' || code == 'm' ) {
+            return MALE;
+        }
+        if ( code == 'F' || code == 'f' ) {
+            return FEMALE;
+        }
+        throw new UnsupportedOperationException(
+            "The code " + code + " is not supported!"
+        );
+    }
+
+    public char getCode() {
+        return code;
+    }
+}
+```
+
 
 
