@@ -360,7 +360,18 @@ public class Money {
 
 ###### 示例31.使用Money类型的Account实体
 
+```java
+public class Account {
 
+    private Long id;
+
+    private String owner;
+
+    private Money balance;
+
+    //Getters and setters are omitted for brevity
+}
+```
 
 
 
