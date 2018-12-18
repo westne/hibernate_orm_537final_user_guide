@@ -310,22 +310,22 @@ Photo photo = entityManager.createQuery(
 
 ```java
 SessionFactory sessionFactory = entityManager.getEntityManagerFactory()
-		.unwrap( SessionFactory.class );
+        .unwrap( SessionFactory.class );
 
 MetamodelImplementor metamodelImplementor = (MetamodelImplementor) sessionFactory.getMetamodel();
 
 Type captionType = metamodelImplementor
-		.entityPersister( Photo.class.getName() )
-		.getPropertyType( "caption" );
+        .entityPersister( Photo.class.getName() )
+        .getPropertyType( "caption" );
 
 Photo photo = (Photo) entityManager.createQuery(
-	"select p " +
-	"from Photo p " +
-	"where upper(caption) = upper(:caption) ", Photo.class )
+    "select p " +
+    "from Photo p " +
+    "where upper(caption) = upper(:caption) ", Photo.class )
 .unwrap( Query.class )
 .setParameter( "caption", new Caption("Nicolae Grigorescu"), captionType)
 .getSingleResult();
 ```
 
-
+通过传递相关联的Hibernate `Type`，您可以在绑定查询参数值时使用`Caption`对象。
 
