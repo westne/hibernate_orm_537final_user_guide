@@ -8,3 +8,9 @@ Hibernate使得开发人员创建自己的基本类型映射类型相对容易�
 
 作为说明不同方法的一种手段，让我们考虑一个用例，其中需要支持`java.util.BitSet`映射作为`VARCHAR`存储。
 
+###### 实现BasicType
+
+第一种方法是直接实现BasicType接口。
+
+因为`BasicType`接口有很多方法可以实现，所以如果值存储在单个数据库列中，则继承`AbstractStandardBasicType`或`AbstractSingleColumnStandardBasicType`更加方便。
+
