@@ -246,7 +246,7 @@ TRACE BasicExtractor:61 - extracted value ([bitSet2_0_0_] : [VARCHAR]) - [{0, 65
 ```java
 public class BitSetUserType implements UserType {
 
-	public static final BitSetUserType INSTANCE = new BitSetUserType();
+    public static final BitSetUserType INSTANCE = new BitSetUserType();
 
     private static final Logger log = Logger.getLogger( BitSetUserType.class );
 
@@ -262,13 +262,13 @@ public class BitSetUserType implements UserType {
 
     @Override
     public boolean equals(Object x, Object y)
-			throws HibernateException {
+            throws HibernateException {
         return Objects.equals( x, y );
     }
 
     @Override
     public int hashCode(Object x)
-			throws HibernateException {
+            throws HibernateException {
         return Objects.hashCode( x );
     }
 
@@ -280,7 +280,7 @@ public class BitSetUserType implements UserType {
         String columnValue = (String) rs.getObject( columnName );
         log.debugv("Result set column {0} value is {1}", columnName, columnValue);
         return columnValue == null ? null :
-				BitSetTypeDescriptor.INSTANCE.fromString( columnValue );
+                BitSetTypeDescriptor.INSTANCE.fromString( columnValue );
     }
 
     @Override
@@ -300,7 +300,7 @@ public class BitSetUserType implements UserType {
 
     @Override
     public Object deepCopy(Object value)
-			throws HibernateException {
+            throws HibernateException {
         return value == null ? null :
             BitSet.valueOf( BitSet.class.cast( value ).toLongArray() );
     }
@@ -312,21 +312,39 @@ public class BitSetUserType implements UserType {
 
     @Override
     public Serializable disassemble(Object value)
-			throws HibernateException {
+            throws HibernateException {
         return (BitSet) deepCopy( value );
     }
 
     @Override
     public Object assemble(Serializable cached, Object owner)
-			throws HibernateException {
+            throws HibernateException {
         return deepCopy( cached );
     }
 
     @Override
     public Object replace(Object original, Object target, Object owner)
-			throws HibernateException {
+            throws HibernateException {
         return deepCopy( original );
     }
+}
+```
+
+实体映射看起来如下：
+
+###### 示例15.自定义`UserType`映射
+
+```java
+@Entity(name = "Product")
+public static class Product {
+
+	@Id
+	private Integer id;
+
+	@Type( type = "bitset" )
+	private BitSet bitSet;
+
+	//Constructors, getters, and setters are omitted for brevity
 }
 ```
 
