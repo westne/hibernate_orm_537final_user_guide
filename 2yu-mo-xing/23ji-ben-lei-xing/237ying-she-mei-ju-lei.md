@@ -308,5 +308,24 @@ Photo photo = entityManager.createQuery(
 
 ###### 示例29.使用Java对象表示的`Caption`属性过滤
 
+```java
+SessionFactory sessionFactory = entityManager.getEntityManagerFactory()
+		.unwrap( SessionFactory.class );
+
+MetamodelImplementor metamodelImplementor = (MetamodelImplementor) sessionFactory.getMetamodel();
+
+Type captionType = metamodelImplementor
+		.entityPersister( Photo.class.getName() )
+		.getPropertyType( "caption" );
+
+Photo photo = (Photo) entityManager.createQuery(
+	"select p " +
+	"from Photo p " +
+	"where upper(caption) = upper(:caption) ", Photo.class )
+.unwrap( Query.class )
+.setParameter( "caption", new Caption("Nicolae Grigorescu"), captionType)
+.getSingleResult();
+```
+
 
 
