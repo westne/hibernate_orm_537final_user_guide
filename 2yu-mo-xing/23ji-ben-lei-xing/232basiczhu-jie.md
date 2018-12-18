@@ -27,16 +27,33 @@ public class Product {
 @Entity(name = "Product")
 public class Product {
 
-	@Id
-	private Integer id;
+    @Id
+    private Integer id;
 
-	private String sku;
+    private String sku;
 
-	private String name;
+    private String name;
 
-	private String description;
+    private String description;
 }
 ```
+
+JPA规范严格限制了可以被标记为basic的Java类型到以下列表：
+
+* Java原语类型（布尔、int等）
+
+* 原语类型的包装器（java.lang.Boolean、java.lang.Integer等）
+* java.lang.String
+* java.math.BigInteger
+* java.math.BigDecimal
+* java.util.Date
+* java.util.Calendar
+* java.sql.Date
+* java.sql.Time
+* java.sql.Timestamp
+* byte\[\] or Byte\[\]
+* char\[\] or Character\[\]
+* enums
 
 
 
