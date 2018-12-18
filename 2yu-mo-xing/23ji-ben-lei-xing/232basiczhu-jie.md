@@ -53,6 +53,7 @@ public class Product {
 > * java.util.Date
 >
 > * java.util.Calendar
+>
 > * java.sql.Date
 > * java.sql.Time
 > * java.sql.Timestamp
@@ -68,7 +69,7 @@ public class Product {
 
 `optional` - boolean（缺省为true）
 
-定义此属性是否允许空。JPA将此定义为“提示”，这实质上意味着它特别需要效果。只要类型不是原语，Hibernate就认为这意味着潜在的列应该是NULLABLE。
+定义此属性是否允许空。JPA将此定义为“提示”，这实质上意味着它特别需要效果。只要类型不是基本类型，Hibernate就认为这意味着潜在的列应该是NULLABLE。
 
 `fetch` - FetchType（缺省为EAGER）
 
