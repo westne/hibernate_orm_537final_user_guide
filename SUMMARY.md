@@ -19,4 +19,5 @@
     * [2.3.3.@Column注解](2yu-mo-xing/23ji-ben-lei-xing/233columnzhu-jie.md)
     * [2.3.4.基本类型注册表BasicTypeRegistry](2yu-mo-xing/23ji-ben-lei-xing/234ji-ben-lei-xing-zhu-ce-biao-basictyperegistry.md)
     * [2.3.5.显式基本类型](2yu-mo-xing/23ji-ben-lei-xing/235xian-shi-ji-ben-lei-xing.md)
+    * [2.3.6.自定义基本类型](2yu-mo-xing/23ji-ben-lei-xing/236zi-ding-yi-ji-ben-lei-xing.md)
 
