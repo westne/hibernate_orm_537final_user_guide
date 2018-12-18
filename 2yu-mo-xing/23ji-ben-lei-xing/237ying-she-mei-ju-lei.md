@@ -41,19 +41,31 @@ public enum PhoneType {
 @Entity(name = "Phone")
 public static class Phone {
 
-	@Id
-	private Long id;
+    @Id
+    private Long id;
 
-	@Column(name = "phone_number")
-	private String number;
+    @Column(name = "phone_number")
+    private String number;
 
-	@Enumerated(EnumType.ORDINAL)
-	@Column(name = "phone_type")
-	private PhoneType type;
+    @Enumerated(EnumType.ORDINAL)
+    @Column(name = "phone_type")
+    private PhoneType type;
 
-	//Getters and setters are omitted for brevity
+    //Getters and setters are omitted for brevity
 
 }
+```
+
+在持久化这个实体类时，Hibernate生成以下语句：
+
+```SQL
+Phone phone = new Phone( );
+phone.setId( 1L );
+phone.setNumber( "123-456-78990" );
+phone.setType( PhoneType.MOBILE );
+entityManager.persist( phone );
+INSERT INTO Phone (phone_number, phone_type, id)
+VALUES ('123-456-78990', 2, 1)
 ```
 
 
