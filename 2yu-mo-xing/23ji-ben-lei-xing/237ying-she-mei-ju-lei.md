@@ -218,15 +218,56 @@ public static class GenderConverter
 @Entity(name = "Photo")
 public static class Photo {
 
-	@Id
-	private Integer id;
+    @Id
+    private Integer id;
 
-	private String name;
+    private String name;
 
-	@Convert(converter = CaptionConverter.class)
-	private Caption caption;
+    @Convert(converter = CaptionConverter.class)
+    private Caption caption;
 
-	//Getters and setters are omitted for brevity
+    //Getters and setters are omitted for brevity
+}
+```
+
+`Caption`类如下所示：
+
+###### 示例26.`Caption `Java对象
+
+```java
+public static class Caption {
+
+	private String text;
+
+	public Caption(String text) {
+		this.text = text;
+	}
+
+	public String getText() {
+		return text;
+	}
+
+	public void setText(String text) {
+		this.text = text;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if ( this == o ) {
+			return true;
+		}
+		if ( o == null || getClass() != o.getClass() ) {
+			return false;
+		}
+		Caption caption = (Caption) o;
+		return text != null ? text.equals( caption.text ) : caption.text == null;
+
+	}
+
+	@Override
+	public int hashCode() {
+		return text != null ? text.hashCode() : 0;
+	}
 }
 ```
 
