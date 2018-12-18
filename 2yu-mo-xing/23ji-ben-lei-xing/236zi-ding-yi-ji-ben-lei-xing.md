@@ -354,7 +354,7 @@ public static class Product {
 
 ```java
 configuration.registerTypeContributor( (typeContributions, serviceRegistry) -> {
-	typeContributions.contributeType( BitSetUserType.INSTANCE, "bitset");
+    typeContributions.contributeType( BitSetUserType.INSTANCE, "bitset");
 } );
 ```
 
@@ -369,6 +369,43 @@ MetadataSources sources = new MetadataSources( standardRegistry );
 MetadataBuilder metadataBuilder = sources.getMetadataBuilder();
 
 metadataBuilder.applyBasicType( BitSetUserType.INSTANCE, "bitset" );
+```
+
+> 正如`BasicType`，你也能够使用一个简单名称注册`UserType`。
+>
+> 不注册，`UserType`映射需要全定义名：
+>
+> ```java
+> @Type( type = "org.hibernate.userguide.mapping.basic.BitSetUserType" )
+> ```
+
+当对`BitSetUserType`实体映射运行先前的测试用例时，Hibernate执行以下SQL语句：
+
+示例17. 持久化自定义`BasicType`
+
+```SQL
+DEBUG SQL:92 -
+    insert
+    into
+        Product
+        (bitSet, id)
+    values
+        (?, ?)
+
+DEBUG BitSetUserType:71 - Binding 1,10,11 to parameter 1
+TRACE BasicBinder:65 - binding parameter [2] as [INTEGER] - [1]
+
+DEBUG SQL:92 -
+    select
+        bitsetuser0_.id as id1_0_0_,
+        bitsetuser0_.bitSet as bitSet2_0_0_
+    from
+        Product bitsetuser0_
+    where
+        bitsetuser0_.id=?
+
+TRACE BasicBinder:65 - binding parameter [1] as [INTEGER] - [1]
+DEBUG BitSetUserType:56 - Result set column bitSet2_0_0_ value is 1,10,11
 ```
 
 
