@@ -208,5 +208,27 @@ public static class GenderConverter
 
 > JPA明确地禁止使用带有标记为`@Enumerated`的属性的AttributeConverter。因此，如果使用AttributeConverter方法，请确保不要将属性标记为`@Enumerated`。
 
+#### 使用AttributeConverter实体属性作为查询参数
+
+假设您具有以下实体：
+
+###### 示例25.带有属性转换器的Photo实体
+
+```java
+@Entity(name = "Photo")
+public static class Photo {
+
+	@Id
+	private Integer id;
+
+	private String name;
+
+	@Convert(converter = CaptionConverter.class)
+	private Caption caption;
+
+	//Getters and setters are omitted for brevity
+}
+```
+
 
 
