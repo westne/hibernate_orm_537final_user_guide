@@ -171,18 +171,18 @@ public static class Product {
 ```java
 @Entity(name = "Product")
 @TypeDef(
-	name = "bitset",
-	defaultForType = BitSet.class,
-	typeClass = BitSetType.class
+    name = "bitset",
+    defaultForType = BitSet.class,
+    typeClass = BitSetType.class
 )
 public static class Product {
 
-	@Id
-	private Integer id;
+    @Id
+    private Integer id;
 
-	private BitSet bitSet;
+    private BitSet bitSet;
 
-	//Getters and setters are omitted for brevity
+    //Getters and setters are omitted for brevity
 }
 ```
 
