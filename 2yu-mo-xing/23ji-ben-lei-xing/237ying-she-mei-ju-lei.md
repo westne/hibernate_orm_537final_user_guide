@@ -331,13 +331,30 @@ Photo photo = (Photo) entityManager.createQuery(
 
 #### 使用HBM映射映射属性转换器
 
-当使用HBM映射时，您仍然可以使用JPA AttributeConverter，因为Hibernate通过类型属性支持这种映射，如下面的示例所示。
+当使用HBM映射时，您仍然可以使用JPA`AttributeConverter`，因为Hibernate通过类型属性支持这种映射，如下面的示例所示。
 
-让我们考虑我们有一个应用程序特定的Money类型：
+让我们考虑我们有一个应用程序特定的`Money`类型：
 
-###### 示例30.特定于应用程序的Money类型
+###### 示例30.特定于应用程序的`Money`类型
 
+```java
+public class Money {
 
+    private long cents;
+
+    public Money(long cents) {
+        this.cents = cents;
+    }
+
+    public long getCents() {
+        return cents;
+    }
+
+    public void setCents(long cents) {
+        this.cents = cents;
+    }
+}
+```
 
 
 
