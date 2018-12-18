@@ -356,5 +356,11 @@ public class Money {
 }
 ```
 
+现在，我们希望在映射Account实体时使用Money类型：
+
+###### 示例31.使用Money类型的Account实体
+
+
+
 
 
