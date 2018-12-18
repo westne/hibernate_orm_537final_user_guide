@@ -335,5 +335,9 @@ Photo photo = (Photo) entityManager.createQuery(
 
 让我们考虑我们有一个应用程序特定的Money类型：
 
-示例30.特定于应用程序的货币类型
+###### 示例30.特定于应用程序的Money类型
+
+
+
+
 
