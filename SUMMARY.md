@@ -17,4 +17,5 @@
     * [2.3.1.Hibernate提供的基本类型](2yu-mo-xing/23ji-ben-lei-xing/231hibernateti-gong-de-ji-ben-lei-xing.md)
     * [2.3.2.@Basic注解](2yu-mo-xing/23ji-ben-lei-xing/232basiczhu-jie.md)
     * [2.3.3.@Column注解](2yu-mo-xing/23ji-ben-lei-xing/233columnzhu-jie.md)
+    * [2.3.4.基本类型注册表BasicTypeRegistry](2yu-mo-xing/23ji-ben-lei-xing/234ji-ben-lei-xing-zhu-ce-biao-basictyperegistry.md)
 
