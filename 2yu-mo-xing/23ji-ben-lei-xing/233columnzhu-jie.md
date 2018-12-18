@@ -8,17 +8,19 @@ JPA定义了隐式确定表和列的名称的规则。有关隐式命名的详�
 @Entity(name = "Product")
 public class Product {
 
-	@Id
-	private Integer id;
+    @Id
+    private Integer id;
 
-	private String sku;
+    private String sku;
 
-	private String name;
+    private String name;
 
-	@Column( name = "NOTES" )
-	private String description;
+    @Column( name = "NOTES" )
+    private String description;
 }
 ```
 
+这里，我们使用`@Column`显式地将`description`属性映射到`NOTES`列，而不是隐式列名称描述。
 
+`@Column`注释还定义了其他映射信息。有关详细信息，请参阅其Javadocs。
 
