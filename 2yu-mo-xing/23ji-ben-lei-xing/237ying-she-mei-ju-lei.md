@@ -295,7 +295,14 @@ public static class CaptionConverter
 
 ###### 示例28.使用DB数据表示通过Caption属性进行筛选
 
-
+```java
+Photo photo = entityManager.createQuery(
+	"select p " +
+	"from Photo p " +
+	"where upper(caption) = upper(:caption) ", Photo.class )
+.setParameter( "caption", "Nicolae Grigorescu" )
+.getSingleResult();
+```
 
 
 
