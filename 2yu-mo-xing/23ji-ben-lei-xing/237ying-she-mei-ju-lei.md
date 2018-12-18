@@ -58,7 +58,7 @@ public static class Phone {
 
 在持久化这个实体类时，Hibernate生成以下语句：
 
-```SQL
+```java
 Phone phone = new Phone( );
 phone.setId( 1L );
 phone.setNumber( "123-456-78990" );
@@ -68,5 +68,17 @@ INSERT INTO Phone (phone_number, phone_type, id)
 VALUES ('123-456-78990', 2, 1)
 ```
 
+在STRING示例中，`phone_type`列被定义为一个\(nullable\) VARCHAR类型，并将保存：
 
+###### `NULL`
+
+空值
+
+###### `LAND_LINE`
+
+对于`LAND_LINE`枚举
+
+###### `MOBILE`
+
+用于`MOBILE`枚举
 
