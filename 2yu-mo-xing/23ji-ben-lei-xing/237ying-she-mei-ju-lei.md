@@ -373,5 +373,25 @@ public class Account {
 }
 ```
 
+由于Hibernate不知道如何持久化Money类型，所以我们可以使用JPA AttributeConverter将Money类型转换为Long。为此，我们将使用以下MoneyConverter工具：
+
+###### 示例32.实现JPA`AttributeConverter`接口的MoneyConverter
+
+```java
+public class MoneyConverter
+        implements AttributeConverter<Money, Long> {
+
+    @Override
+    public Long convertToDatabaseColumn(Money attribute) {
+        return attribute == null ? null : attribute.getCents();
+    }
+
+    @Override
+    public Money convertToEntityAttribute(Long dbData) {
+        return dbData == null ? null : new Money( dbData );
+    }
+}
+```
+
 
 
