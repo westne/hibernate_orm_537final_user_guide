@@ -206,5 +206,5 @@ doInHibernate( this::sessionFactory, session -> {
 } );
 ```
 
-
+当执行这个单元测试，Hibernate生成如下的SQL语句：
 
