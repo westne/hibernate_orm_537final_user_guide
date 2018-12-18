@@ -327,5 +327,5 @@ Photo photo = (Photo) entityManager.createQuery(
 .getSingleResult();
 ```
 
-通过传递相关联的Hibernate `Type`，您可以在绑定查询参数值时使用`Caption`对象。
+通过传递相关联的Hibernate`Type`，您可以在绑定查询参数值时使用`Caption`对象。
 
