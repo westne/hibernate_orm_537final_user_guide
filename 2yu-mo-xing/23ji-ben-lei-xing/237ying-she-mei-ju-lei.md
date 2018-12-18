@@ -150,3 +150,45 @@ public enum Gender {
 
 可以使用JPA 2.1属性转换器以符合JPA的方式映射枚举。
 
+###### 示例24.Enum映射与`AttributeConverter`示例
+
+```java
+@Entity(name = "Person")
+public static class Person {
+
+	@Id
+	private Long id;
+
+	private String name;
+
+	@Convert( converter = GenderConverter.class )
+	public Gender gender;
+
+	//Getters and setters are omitted for brevity
+
+}
+
+@Converter
+public static class GenderConverter
+		implements AttributeConverter<Gender, Character> {
+
+	public Character convertToDatabaseColumn( Gender value ) {
+		if ( value == null ) {
+			return null;
+		}
+
+		return value.getCode();
+	}
+
+	public Gender convertToEntityAttribute( Character value ) {
+		if ( value == null ) {
+			return null;
+		}
+
+		return Gender.fromCode( value );
+	}
+}
+```
+
+
+
