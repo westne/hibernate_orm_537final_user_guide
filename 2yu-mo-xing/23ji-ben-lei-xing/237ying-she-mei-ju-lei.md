@@ -329,3 +329,11 @@ Photo photo = (Photo) entityManager.createQuery(
 
 通过传递相关联的Hibernate`Type`，您可以在绑定查询参数值时使用`Caption`对象。
 
+#### 使用HBM映射映射属性转换器
+
+当使用HBM映射时，您仍然可以使用JPA AttributeConverter，因为Hibernate通过类型属性支持这种映射，如下面的示例所示。
+
+让我们考虑我们有一个应用程序特定的Money类型：
+
+示例30.特定于应用程序的货币类型
+
