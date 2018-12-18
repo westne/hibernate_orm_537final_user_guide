@@ -210,8 +210,6 @@ doInHibernate( this::sessionFactory, session -> {
 
 ###### 示例13.持久化自定义`BasicType`
 
-
-
 ```SQL
 DEBUG SQL:92 -
     insert
@@ -237,5 +235,5 @@ TRACE BasicBinder:65 - binding parameter [1] as [INTEGER] - [1]
 TRACE BasicExtractor:61 - extracted value ([bitSet2_0_0_] : [VARCHAR]) - [{0, 65, 128, 129}]
 ```
 
-
+正如你所见，`BitSetType`类负责Java到SQL和SQL到Java的类型转换。
 
