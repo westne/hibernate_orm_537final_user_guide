@@ -10,5 +10,5 @@
 
 作为`BasicTypeRegistry`中的基线，Hibernate遵循JDBC对Java类型的推荐映射。JDBC建议将String映射到VARCHAR，这是StringType处理的精确映射。所以这就是字符串`BasicTypeRegistry`中的基线映射。
 
-应用程序还可以在引导期间使用`MetadataBuilder#applyBasicType`方法或`MetadataBuilder#applyTypes`方法之一继承（添加新的`BasicType`注册）或重写（替换现有的`BasicType`注册）。有关详细信息，请参阅[自定义基本类型](http://docs.jboss.org/hibernate/orm/current/userguide/html_single/Hibernate_User_Guide.html#basic-custom-type)部分。
+应用程序还可以在启动期间使用`MetadataBuilder#applyBasicType`方法，或者继承（添加新的`BasicType`注册）或重写（替换现有的`BasicType`注册）`MetadataBuilder#applyTypes`方法之一。有关详细信息，请参阅[自定义基本类型](http://docs.jboss.org/hibernate/orm/current/userguide/html_single/Hibernate_User_Guide.html#basic-custom-type)部分。
 
