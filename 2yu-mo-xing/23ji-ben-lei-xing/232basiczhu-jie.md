@@ -49,6 +49,7 @@ public class Product {
 > * java.math.BigInteger
 >
 > * java.math.BigDecimal
+>
 > * java.util.Date
 > * java.util.Calendar
 > * java.sql.Date
@@ -63,6 +64,14 @@ public class Product {
 > 如果需要考虑提供程序的可移植性，那么应该只使用这些基本类型。请注意，JPA 2.1确实添加了`javax.persistence.AttributeConverter`的概念，以帮助减轻其中一些顾虑；有关此主题的更多信息，请参阅JPA [2.1AttributeConverters](http://docs.jboss.org/hibernate/orm/current/userguide/html_single/Hibernate_User_Guide.html#basic-jpa-convert)。
 
 `@Basic`定义了两个属性。
+
+`optional` - 布尔（缺省为true）
+
+定义此属性是否允许空。JPA将此定义为“提示”，这实质上意味着它特别需要效果。只要类型不是原语，Hibernate就认为这意味着潜在的列应该是NULLABLE。
+
+`fetch` - FetchType（缺省为EAGER）
+
+定义是否应急切地或惰性地获取此属性。JPA说，EAGER是提供者（Hibernate）的一个要求，即当获取所有者时应该获取值，而LAZY仅仅是在访问属性时获取值的提示。Hibernate忽略基本类型的此设置，除非您正在使用字节码增强。有关获取和字节码增强的附加信息，请参阅[BytecodeEnhancement](http://docs.jboss.org/hibernate/orm/current/userguide/html_single/Hibernate_User_Guide.html#BytecodeEnhancement)。
 
 
 
