@@ -35,3 +35,26 @@ public enum PhoneType {
 
 对于`MOBILE`枚举
 
+###### 示例19.`@Enumerated(ORDINAL)`例子
+
+```java
+@Entity(name = "Phone")
+public static class Phone {
+
+	@Id
+	private Long id;
+
+	@Column(name = "phone_number")
+	private String number;
+
+	@Enumerated(EnumType.ORDINAL)
+	@Column(name = "phone_type")
+	private PhoneType type;
+
+	//Getters and setters are omitted for brevity
+
+}
+```
+
+
+
