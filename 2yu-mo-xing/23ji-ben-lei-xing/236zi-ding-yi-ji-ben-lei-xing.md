@@ -164,7 +164,7 @@ public static class Product {
 }
 ```
 
-另外，你可以使用@TypeDef，并且跳过注册阶段：
+另外，你可以使用`@TypeDef`，并且跳过注册阶段：
 
 ###### 示例11.使用`@TypeDef`注册一个自定义类型
 
@@ -188,21 +188,21 @@ public static class Product {
 
 为了校验新的`BasicType`实现，我们可以进行如下测试：
 
-示例12.持久化自定义`BasicType`
+###### 示例12.持久化自定义`BasicType`
 
 ```java
 BitSet bitSet = BitSet.valueOf( new long[] {1, 2, 3} );
 
 doInHibernate( this::sessionFactory, session -> {
-	Product product = new Product( );
-	product.setId( 1 );
-	product.setBitSet( bitSet );
-	session.persist( product );
+    Product product = new Product( );
+    product.setId( 1 );
+    product.setBitSet( bitSet );
+    session.persist( product );
 } );
 
 doInHibernate( this::sessionFactory, session -> {
-	Product product = session.get( Product.class, 1 );
-	assertEquals(bitSet, product.getBitSet());
+    Product product = session.get( Product.class, 1 );
+    assertEquals(bitSet, product.getBitSet());
 } );
 ```
 
