@@ -1,0 +1,6 @@
+许多组织围绕数据库对象（表、列、外键等）的命名定义规则。PhysicalNamingStrategy的思想是帮助实现这样的命名规则，而不必通过显式名称将它们硬编码到映射中。
+
+ImplicitNamingStrategy的目的是在没有明确指定时确定名为`accountNumber`的属性映射到`accountNumber`的逻辑列名，而PhysicalNamingStrategy的目的是，例如，说明物理列名应该缩写为`acct_num`。
+
+的确，在本例中，acct\_num的解决可以在ImplicitNamingStrategy中进行处理。但关键是关注点的分离。无论属性是否显式地指定了列名，或者我们是否隐式地确定了列名，都将应用PhysicalNamingStrategy。ImplicitNamingStrategy只有在没有给出显式名称时才会应用。所以这取决于需要和意图。
+

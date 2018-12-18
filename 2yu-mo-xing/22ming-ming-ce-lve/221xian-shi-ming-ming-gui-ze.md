@@ -18,11 +18,16 @@
 
         `legacy-jpa`
 
-        对于`org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl`- 符合为JPA 1.0开发的遗留NamingStrategy规范，遗憾的是，在许多方面对于隐式命名规则都不清楚
+        对于`org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl`- 符合为JPA 1.0开发的遗留NamingStrategy规范，遗憾的是，在许多方面对于隐式命名规则都不清楚
 
-        `component-path`
+        `component-path`
 
-        对于`org.hibernate.boot.model.naming.ImplicitNamingStrategyComponentPathImpl`- 大部分遵循`ImplicitNamingStrategyJpaCompliantImpl`规则， 除了它使用完整的复合路径，而不仅仅是结尾属性部分
+        对于`org.hibernate.boot.model.naming.ImplicitNamingStrategyComponentPathImpl`- 大部分遵循`ImplicitNamingStrategyJpaCompliantImpl`规则， 除了它使用完整的复合路径，而不仅仅是结尾属性部分
+
+* 引用实现org.hibernate.boot.model.naming.ImplicitNamingStrategy约定的类
+* 实现org.hibernate.boot.model.naming.ImplicitNamingStrategy约定的类的FQN
+
+其次，应用程序和集成可以利用org.hibernate.boot.MetadataBuilder\#applyImplicitNamingStrategy指定要使用的ImplicitNamingStrategy。有关引导的其他详细信息，请参阅引导程序。
 
 
 
