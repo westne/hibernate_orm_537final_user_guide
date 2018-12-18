@@ -304,7 +304,9 @@ Photo photo = entityManager.createQuery(
 .getSingleResult();
 ```
 
-为了使用Java对象Caption表示，必须获得相关的Hibernate类型。
+为了使用Java对象`Caption`表示，必须获得相关的Hibernate`Type`。
 
-示例29.使用Java对象表示的Caption属性过滤
+###### 示例29.使用Java对象表示的`Caption`属性过滤
+
+
 
