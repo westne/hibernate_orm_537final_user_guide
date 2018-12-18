@@ -117,5 +117,30 @@ public class BitSetTypeDescriptor extends AbstractTypeDescriptor<BitSet> {
 }
 ```
 
+`unwrap`方法用于将`BitSet`作为`PreparedStatement`绑定参数传递的时候，而`wrap`方法用于将JDBC列值对象（在本例中为`String`）转换为实际的映射对象类型（在本例中为`BitSet`）。
+
+必须注册`BasicType`，这可以在引导时完成：
+
+###### 示例9.注册自定义`BasicType`实现
+
+```java
+configuration.registerTypeContributor( (typeContributions, serviceRegistry) -> {
+	typeContributions.contributeType( BitSetType.INSTANCE );
+} );
+```
+
+或者使用`MetadataBuilder`
+
+```java
+ServiceRegistry standardRegistry =
+    new StandardServiceRegistryBuilder().build();
+
+MetadataSources sources = new MetadataSources( standardRegistry );
+
+MetadataBuilder metadataBuilder = sources.getMetadataBuilder();
+
+metadataBuilder.applyBasicType( BitSetType.INSTANCE );
+```
+
 
 
