@@ -15,4 +15,5 @@
     * [2.2.2.物理命名策略](2yu-mo-xing/22ming-ming-ce-lve/222wu-li-ming-ming-ce-lve.md)
   * [2.3.基本类型](2yu-mo-xing/23ji-ben-lei-xing.md)
     * [2.3.1.Hibernate提供的基本类型](2yu-mo-xing/23ji-ben-lei-xing/231hibernateti-gong-de-ji-ben-lei-xing.md)
+    * [2.3.2.@Basic注解](2yu-mo-xing/23ji-ben-lei-xing/232basiczhu-jie.md)
 
