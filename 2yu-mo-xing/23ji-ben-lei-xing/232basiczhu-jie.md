@@ -47,6 +47,7 @@ public class Product {
 > * java.lang.String
 >
 > * java.math.BigInteger
+>
 > * java.math.BigDecimal
 > * java.util.Date
 > * java.util.Calendar
