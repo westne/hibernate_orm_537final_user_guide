@@ -338,14 +338,37 @@ public class BitSetUserType implements UserType {
 @Entity(name = "Product")
 public static class Product {
 
-	@Id
-	private Integer id;
+    @Id
+    private Integer id;
 
-	@Type( type = "bitset" )
-	private BitSet bitSet;
+    @Type( type = "bitset" )
+    private BitSet bitSet;
 
-	//Constructors, getters, and setters are omitted for brevity
+    //Constructors, getters, and setters are omitted for brevity
 }
+```
+
+在这个例子中，`UserType`注册在`bitset`名下，完成像这样：
+
+###### 示例16.注册一个自定义`UserType`实现
+
+```java
+configuration.registerTypeContributor( (typeContributions, serviceRegistry) -> {
+	typeContributions.contributeType( BitSetUserType.INSTANCE, "bitset");
+} );
+```
+
+或者使用`MetadataBuilder`
+
+```java
+ServiceRegistry standardRegistry =
+    new StandardServiceRegistryBuilder().build();
+
+MetadataSources sources = new MetadataSources( standardRegistry );
+
+MetadataBuilder metadataBuilder = sources.getMetadataBuilder();
+
+metadataBuilder.applyBasicType( BitSetUserType.INSTANCE, "bitset" );
 ```
 
 
