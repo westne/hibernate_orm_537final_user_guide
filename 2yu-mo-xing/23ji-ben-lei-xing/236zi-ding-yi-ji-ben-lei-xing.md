@@ -125,7 +125,7 @@ public class BitSetTypeDescriptor extends AbstractTypeDescriptor<BitSet> {
 
 ```java
 configuration.registerTypeContributor( (typeContributions, serviceRegistry) -> {
-	typeContributions.contributeType( BitSetType.INSTANCE );
+    typeContributions.contributeType( BitSetType.INSTANCE );
 } );
 ```
 
@@ -142,5 +142,5 @@ MetadataBuilder metadataBuilder = sources.getMetadataBuilder();
 metadataBuilder.applyBasicType( BitSetType.INSTANCE );
 ```
 
-
+随着新的`BitSetType`被注册为`bitset`，实体映射看起来像这样：
 
