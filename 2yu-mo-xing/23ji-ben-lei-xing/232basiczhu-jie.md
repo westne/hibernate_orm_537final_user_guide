@@ -6,17 +6,34 @@ Strictly speaking, a basic type is denoted by the`javax.persistence.Basic`annota
 @Entity(name = "Product")
 public class Product {
 
+    @Id
+    @Basic
+    private Integer id;
+
+    @Basic
+    private String sku;
+
+    @Basic
+    private String name;
+
+    @Basic
+    private String description;
+}
+```
+
+###### 示例4.`@Basic`隐式声明
+
+```java
+@Entity(name = "Product")
+public class Product {
+
 	@Id
-	@Basic
 	private Integer id;
 
-	@Basic
 	private String sku;
 
-	@Basic
 	private String name;
 
-	@Basic
 	private String description;
 }
 ```
