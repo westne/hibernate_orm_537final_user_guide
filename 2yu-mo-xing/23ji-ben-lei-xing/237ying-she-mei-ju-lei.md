@@ -148,5 +148,5 @@ public enum Gender {
 }
 ```
 
-
+可以使用JPA 2.1属性转换器以符合JPA的方式映射枚举。
 
