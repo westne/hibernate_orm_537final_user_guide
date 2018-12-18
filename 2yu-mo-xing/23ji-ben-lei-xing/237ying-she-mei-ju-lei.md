@@ -297,12 +297,14 @@ public static class CaptionConverter
 
 ```java
 Photo photo = entityManager.createQuery(
-	"select p " +
-	"from Photo p " +
-	"where upper(caption) = upper(:caption) ", Photo.class )
+    "select p " +
+    "from Photo p " +
+    "where upper(caption) = upper(:caption) ", Photo.class )
 .setParameter( "caption", "Nicolae Grigorescu" )
 .getSingleResult();
 ```
 
+为了使用Java对象Caption表示，必须获得相关的Hibernate类型。
 
+示例29.使用Java对象表示的Caption属性过滤
 
