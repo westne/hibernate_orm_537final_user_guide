@@ -2,5 +2,5 @@ Hibernate同时理解应用程序数据的Java和JDBC表示。从数据库读取
 
 类型的用法
 
-Hibernate类型既不是Java类型，也不是SQL数据类型。它提供了关于这两个方面的信息以及理解它们之间的编组。
+Hibernate类型既不是Java类型，也不是SQL数据类型。它提供了关于这两个方面的信息以及理解它们之间的编组。当遇到Hibernate讨论中的术语类型时，它可能指代Java类型、JDBC类型或Hibernate类型，根据上下文。
 
