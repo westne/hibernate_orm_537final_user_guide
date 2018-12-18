@@ -166,5 +166,25 @@ public static class Product {
 
 另外，你可以使用@TypeDef，并且跳过注册阶段：
 
+###### 示例11.使用`@TypeDef`注册一个自定义类型
+
+```java
+@Entity(name = "Product")
+@TypeDef(
+	name = "bitset",
+	defaultForType = BitSet.class,
+	typeClass = BitSetType.class
+)
+public static class Product {
+
+	@Id
+	private Integer id;
+
+	private BitSet bitSet;
+
+	//Getters and setters are omitted for brevity
+}
+```
+
 
 
