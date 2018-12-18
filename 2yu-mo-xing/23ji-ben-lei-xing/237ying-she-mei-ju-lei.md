@@ -88,19 +88,28 @@ VALUES ('123-456-78990', 2, 1)
 @Entity(name = "Phone")
 public static class Phone {
 
-	@Id
-	private Long id;
+    @Id
+    private Long id;
 
-	@Column(name = "phone_number")
-	private String number;
+    @Column(name = "phone_number")
+    private String number;
 
-	@Enumerated(EnumType.STRING)
-	@Column(name = "phone_type")
-	private PhoneType type;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "phone_type")
+    private PhoneType type;
 
-	//Getters and setters are omitted for brevity
+    //Getters and setters are omitted for brevity
 
 }
+```
+
+持久化`@Enumerated(ORDINAL)`例子中相同的持久类时，Hibernate生成以下的SQL语句：
+
+###### 示例22.持久化一个使用`@Enumerated(STRING)`映射的实体
+
+```java
+INSERT INTO Phone (phone_number, phone_type, id)
+VALUES ('123-456-78990', 'MOBILE', 1)
 ```
 
 
