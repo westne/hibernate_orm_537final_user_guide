@@ -23,3 +23,15 @@ public enum PhoneType {
 
 在ORDINAL示例中，`phone_type`列被定义为一个\(nullable\) INTEGER类型，并将保存：
 
+`NULL`
+
+对于 空值
+
+`0`
+
+对于`LAND_LINE`枚举
+
+`1`
+
+对于`MOBILE`枚举
+
