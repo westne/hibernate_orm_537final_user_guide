@@ -232,41 +232,61 @@ public static class Photo {
 
 `Caption`类如下所示：
 
-###### 示例26.`Caption `Java对象
+###### 示例26.`Caption`Java对象
 
 ```java
 public static class Caption {
 
-	private String text;
+    private String text;
 
-	public Caption(String text) {
-		this.text = text;
-	}
+    public Caption(String text) {
+        this.text = text;
+    }
 
-	public String getText() {
-		return text;
-	}
+    public String getText() {
+        return text;
+    }
 
-	public void setText(String text) {
-		this.text = text;
+    public void setText(String text) {
+        this.text = text;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if ( this == o ) {
+            return true;
+        }
+        if ( o == null || getClass() != o.getClass() ) {
+            return false;
+        }
+        Caption caption = (Caption) o;
+        return text != null ? text.equals( caption.text ) : caption.text == null;
+
+    }
+
+    @Override
+    public int hashCode() {
+        return text != null ? text.hashCode() : 0;
+    }
+}
+```
+
+并且我们有一个`AttributeConverter`来处理`Caption`Java对象：
+
+###### 示例27.`Caption `Java对象属性转换器
+
+```java
+public static class CaptionConverter
+		implements AttributeConverter<Caption, String> {
+
+	@Override
+	public String convertToDatabaseColumn(Caption attribute) {
+		return attribute.getText();
 	}
 
 	@Override
-	public boolean equals(Object o) {
-		if ( this == o ) {
-			return true;
-		}
-		if ( o == null || getClass() != o.getClass() ) {
-			return false;
-		}
-		Caption caption = (Caption) o;
-		return text != null ? text.equals( caption.text ) : caption.text == null;
-
-	}
-
-	@Override
-	public int hashCode() {
-		return text != null ? text.hashCode() : 0;
+	public Caption convertToEntityAttribute(String dbData) {
+		return new Caption( dbData );
 	}
 }
 ```
