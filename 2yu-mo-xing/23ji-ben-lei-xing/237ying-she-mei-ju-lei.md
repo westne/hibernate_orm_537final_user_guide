@@ -393,5 +393,5 @@ public class MoneyConverter
 }
 ```
 
-
+要使用HBM配置文件映射MoneyConverter，需要在property元素的type属性中使用转换后的::前缀
 
