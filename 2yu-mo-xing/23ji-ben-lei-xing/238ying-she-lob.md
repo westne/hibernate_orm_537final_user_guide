@@ -143,5 +143,26 @@ CREATE TABLE Product (
 )
 ```
 
+让我们首先使用JDBC`java.sql.Blob`类型映射它。
+
+###### 例42.BLOB映射到`java.sql.Blob`
+
+```java
+@Entity(name = "Product")
+public static class Product {
+
+    @Id
+    private Integer id;
+
+    private String name;
+
+    @Lob
+    private Blob image;
+
+    //Getters and setters are omitted for brevity
+
+}
+```
+
 
 
