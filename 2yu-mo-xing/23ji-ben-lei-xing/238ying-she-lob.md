@@ -145,7 +145,7 @@ CREATE TABLE Product (
 
 让我们首先使用JDBC`java.sql.Blob`类型映射它。
 
-###### 例42.BLOB映射到`java.sql.Blob`
+###### 例42.`BLOB`被映射到`java.sql.Blob`
 
 ```java
 @Entity(name = "Product")
