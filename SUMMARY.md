@@ -24,4 +24,6 @@
     * [2.3.8.映射LOBs](2yu-mo-xing/23ji-ben-lei-xing/238ying-she-lob.md)
     * [2.3.9.映射国家化字符数据](2yu-mo-xing/23ji-ben-lei-xing/239ying-she-ben-di-hua-zi-fu-shu-ju.md)
     * [2.3.10.映射UUID值](2yu-mo-xing/23ji-ben-lei-xing/2310.md)
+    * [2.3.11.UUID作为binary](2yu-mo-xing/23ji-ben-lei-xing/2311uuidzuo-wei-er-jin-zhi.md)
+    * [2.3.12.UUID作为\(var\)char](2yu-mo-xing/23ji-ben-lei-xing/2312uuidzuo-4e3a28-var-char.md)
 
