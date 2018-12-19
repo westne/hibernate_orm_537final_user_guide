@@ -65,5 +65,12 @@ VALUES ( '2015-12-29', 1 )
 private Date timestamp;
 ```
 
+Hibernate将发出包含小时、分钟和秒的INSERT语句。
+
+```java
+INSERT INTO DateEvent ( timestamp, id )
+VALUES ( '16:51:58', 1 )
+```
+
 
 
