@@ -28,4 +28,5 @@
     * [2.3.12.UUID作为\(var\)char](2yu-mo-xing/23ji-ben-lei-xing/2312uuidzuo-4e3a28-var-char.md)
     * [2.3.13.PostgreSQL特定的UUID](2yu-mo-xing/23ji-ben-lei-xing/2313postgresqlte-ding-de-uuid.md)
     * [2.3.14.UUID作为标识符](2yu-mo-xing/23ji-ben-lei-xing/2314uuidzuo-wei-biao-shi-fu.md)
+    * [2.3.16.映射Date/Time值](2yu-mo-xing/23ji-ben-lei-xing/2316ying-she-date-time-zhi.md)
 
