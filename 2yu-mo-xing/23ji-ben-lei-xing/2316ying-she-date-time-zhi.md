@@ -89,7 +89,25 @@ INSERT INTO DateEvent ( timestamp, id )
 VALUES ( '2015-12-29 16:54:04.544', 1 )
 ```
 
-> 与`java.util.Date`一样，`java.util.Calendar`需要`@Temporal`注释，以便知道要选择什么JDBC数据类型：`DATE`、`TIME`或`TIMESTAMP`。如果`java.util.Date`标记了一个时间点，那么`java.util.Calendar`将考虑默认时区。
+> 与`java.util.Date`一样，`java.util.Calendar`需要`@Temporal`注释，以便知道要选择什么JDBC数据类型：DATE、TIME或TIMESTAMP。如果`java.util.Date`标记了一个时间点，那么`java.util.Calendar`将考虑默认时区。
+
+#### 映射Java 8 Date/Time值
+
+Java 8附带了一个新的Date/Time API，它支持Java.Times包中的即时日期、间隔、本地和分区Date/Time不可变实例。
+
+标准SQLDate/Time类型与所支持的Java 8 Date/Time类类型之间的映射如下；
+
+`DATE`
+
+`java.time.LocalDate`
+
+`TIME`
+
+`java.time.LocalTime`,`java.time.OffsetTime`
+
+`TIMESTAMP`
+
+`java.time.Instant`,`java.time.LocalDateTime`,`java.time.OffsetDateTime`和`java.time.ZonedDateTime`
 
 
 
