@@ -88,18 +88,28 @@ try (Reader reader = product.getWarranty().getCharacterStream()) {
 @Entity(name = "Product")
 public static class Product {
 
-	@Id
-	private Integer id;
+    @Id
+    private Integer id;
 
-	private String name;
+    private String name;
 
-	@Lob
-	private String warranty;
+    @Lob
+    private String warranty;
 
-	//Getters and setters are omitted for brevity
+    //Getters and setters are omitted for brevity
 
 }
 ```
+
+> JDBC处理LOB数据的方式因驱动程序而异，Hibernate试图代表您处理所有这些差异。
+>
+> 然而，有些驱动程序比较棘手（例如，PostgreSQL），在这种情况下，您可能需要做一些额外的工作才能使LOB工作。这些讨论超出了本指南的范围。
+
+我们甚至可能希望将物化数据作为char数组（尽管这可能不是个好主意）。
+
+###### 例40._CLOB-物化_`char[]`_映射_
+
+
 
 
 
