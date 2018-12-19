@@ -68,5 +68,17 @@ product.setWarranty( ClobProxy.generateProxy( warranty ) );
 entityManager.persist( product );
 ```
 
+要检索`Clob`内容，需要转换底层`java.io.Reader`：
+
+###### 例38.返回`java.sql.Clob`实体
+
+```java
+Product product = entityManager.find( Product.class, productId );
+
+try (Reader reader = product.getWarranty().getCharacterStream()) {
+    assertEquals( "My product warranty", toString( reader ) );
+}
+```
+
 
 
