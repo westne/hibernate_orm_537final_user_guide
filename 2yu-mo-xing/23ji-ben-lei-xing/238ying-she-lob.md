@@ -14,3 +14,22 @@ JDBC LOB定位器类型包括：
 
 映射这些LOB值的物化形式将使用更熟悉的Java类型，如String、char\[\]、byte\[\]等。对比较熟悉的折衷通常是性能。
 
+#### 映射CLOB
+
+首先，假设我们有一个希望映射的`CLOB`列（[映射本地化字符数据](http://docs.jboss.org/hibernate/orm/current/userguide/html_single/Hibernate_User_Guide.html#basic-nationalized)部分将讨论`NCLOB`字符`LOB`数据）。
+
+考虑到我们有以下数据库表：
+
+###### 示例35.Culb－SQL
+
+```SQL
+CREATE TABLE Product (
+  id INTEGER NOT NULL,
+  name VARCHAR(255),
+  warranty CLOB,
+  PRIMARY KEY (id)
+)
+```
+
+
+
