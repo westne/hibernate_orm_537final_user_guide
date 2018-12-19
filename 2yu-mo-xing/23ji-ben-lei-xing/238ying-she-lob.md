@@ -164,5 +164,21 @@ public static class Product {
 }
 ```
 
+要持久化这样的实体，必须使用`BlobProxy`Hibernate实用程序创建一个`Blob`：
+
+###### 例43.持久化`java.sql.Blob`实体
+
+```java
+byte[] image = new byte[] {1, 2, 3};
+
+final Product product = new Product();
+product.setId( 1 );
+product.setName( "Mobile phone" );
+
+product.setImage( BlobProxy.generateProxy( image ) );
+
+entityManager.persist( product );
+```
+
 
 
