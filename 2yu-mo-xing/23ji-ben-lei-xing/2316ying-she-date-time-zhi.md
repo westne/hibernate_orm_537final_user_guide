@@ -24,17 +24,26 @@ Hibernate支持各种Java Date/Time类作为持久域模型实体属性被映射
 @Entity(name = "DateEvent")
 public static class DateEvent {
 
-	@Id
-	@GeneratedValue
-	private Long id;
+    @Id
+    @GeneratedValue
+    private Long id;
 
-	@Column(name = "`timestamp`")
-	@Temporal(TemporalType.DATE)
-	private Date timestamp;
+    @Column(name = "`timestamp`")
+    @Temporal(TemporalType.DATE)
+    private Date timestamp;
 
-	//Getters and setters are omitted for brevity
+    //Getters and setters are omitted for brevity
 
 }
+```
+
+当持久化这样的实体时：
+
+###### 例55.持久化`java.util.Date`映射
+
+```java
+DateEvent dateEvent = new DateEvent( new Date() );
+entityManager.persist( dateEvent );
 ```
 
 
