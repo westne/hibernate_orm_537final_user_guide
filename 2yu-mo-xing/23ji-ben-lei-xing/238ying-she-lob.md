@@ -113,17 +113,34 @@ public static class Product {
 @Entity(name = "Product")
 public static class Product {
 
-	@Id
-	private Integer id;
+    @Id
+    private Integer id;
 
-	private String name;
+    private String name;
 
-	@Lob
-	private char[] warranty;
+    @Lob
+    private char[] warranty;
 
-	//Getters and setters are omitted for brevity
+    //Getters and setters are omitted for brevity
 
 }
+```
+
+#### BLOB
+
+BLOB数据以类似的方式映射。
+
+考虑到我们有以下数据库表：
+
+###### 例41.BLOB-SQL
+
+```SQL
+CREATE TABLE Product (
+    id INTEGER NOT NULL ,
+    image blob ,
+    name VARCHAR(255) ,
+    PRIMARY KEY ( id )
+)
 ```
 
 
