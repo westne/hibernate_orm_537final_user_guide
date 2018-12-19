@@ -393,5 +393,104 @@ public class MoneyConverter
 }
 ```
 
-要使用HBM配置文件映射MoneyConverter，需要在property元素的type属性中使用转换后的::前缀
+要使用HBM配置文件映射`MoneyConverter`，需要在property元素的`type`属性中使用`converted::`前缀。
+
+###### 示例33.`AttributeConverter`的HBM映射
+
+```java
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="org.hibernate.userguide.mapping.converter.hbm">
+    <class name="Account" table="account" >
+        <id name="id"/>
+
+        <property name="owner"/>
+
+        <property name="balance"
+            type="converted::org.hibernate.userguide.mapping.converter.hbm.MoneyConverter"/>
+
+    </class>
+</hibernate-mapping>
+```
+
+#### 自定义类型
+
+您还可以使用Hibernate自定义类型映射来映射枚举。让我们再次访问Gender枚举示例，这次使用自定义类型存储更标准化的“M”和“F”代码。
+
+###### 示例34.使用自定义类型的枚举映射示例
+
+```java
+@Entity(name = "Person")
+public static class Person {
+
+	@Id
+	private Long id;
+
+	private String name;
+
+	@Type( type = "org.hibernate.userguide.mapping.basic.GenderType" )
+	public Gender gender;
+
+	//Getters and setters are omitted for brevity
+
+}
+
+public class GenderType extends AbstractSingleColumnStandardBasicType<Gender> {
+
+    public static final GenderType INSTANCE = new GenderType();
+
+    public GenderType() {
+        super(
+            CharTypeDescriptor.INSTANCE,
+            GenderJavaTypeDescriptor.INSTANCE
+        );
+    }
+
+    public String getName() {
+        return "gender";
+    }
+
+    @Override
+    protected boolean registerUnderJavaType() {
+        return true;
+    }
+}
+
+public class GenderJavaTypeDescriptor extends AbstractTypeDescriptor<Gender> {
+
+    public static final GenderJavaTypeDescriptor INSTANCE =
+        new GenderJavaTypeDescriptor();
+
+    protected GenderJavaTypeDescriptor() {
+        super( Gender.class );
+    }
+
+    public String toString(Gender value) {
+        return value == null ? null : value.name();
+    }
+
+    public Gender fromString(String string) {
+        return string == null ? null : Gender.valueOf( string );
+    }
+
+    public <X> X unwrap(Gender value, Class<X> type, WrapperOptions options) {
+        return CharacterTypeDescriptor.INSTANCE.unwrap(
+            value == null ? null : value.getCode(),
+            type,
+            options
+        );
+    }
+
+    public <X> Gender wrap(X value, WrapperOptions options) {
+        return Gender.fromCode(
+            CharacterTypeDescriptor.INSTANCE.wrap( value, options )
+        );
+    }
+}
+```
+
+
 
