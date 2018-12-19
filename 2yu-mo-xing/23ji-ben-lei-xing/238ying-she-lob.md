@@ -12,7 +12,5 @@ JDBC LOB定位器类型包括：
 * java.sql.Clob
 * java.sql.NClob
 
-映射这些LOB值的物化形式将使用更熟悉的Java类型，如String、char\[\]、byte\[\]等。比较熟悉的折衷通常是性能。
-
-
+映射这些LOB值的物化形式将使用更熟悉的Java类型，如String、char\[\]、byte\[\]等。对比较熟悉的折衷通常是性能。
 
