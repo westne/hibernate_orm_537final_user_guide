@@ -97,17 +97,23 @@ Java 8附带了一个新的Date/Time API，它支持Java.Times包中的即时日
 
 标准SQLDate/Time类型与所支持的Java 8 Date/Time类类型之间的映射如下；
 
-`DATE`
+###### `DATE`
 
 `java.time.LocalDate`
 
-`TIME`
+###### `TIME`
 
 `java.time.LocalTime`,`java.time.OffsetTime`
 
-`TIMESTAMP`
+###### `TIMESTAMP`
 
 `java.time.Instant`,`java.time.LocalDateTime`,`java.time.OffsetDateTime`和`java.time.ZonedDateTime`
+
+> 因为Java 8日期/时间类与SQL类型之间的映射是隐式的，所以不需要指定`@Temporal `注释。将其设置在`java.times`类上会引发以下异常：
+>
+> `org.hibernate.AnnotationException: @Temporal should only be set on a java.util.Date or java.util.Calendar property`
+
+
 
 
 
