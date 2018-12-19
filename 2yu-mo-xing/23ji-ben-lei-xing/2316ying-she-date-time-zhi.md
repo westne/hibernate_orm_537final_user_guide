@@ -153,5 +153,5 @@ Session session = sessionFactory()
     .openSession();
 ```
 
-有了这个配置属性，Hibernate将调用[PreparedStatement.setTimestamp\(int parameterIndex，java.sql.Timestamp，Calendacalcal\)](https://docs.oracle.com/javase/8/docs/api/java/sql/PreparedStatement.html#setTimestamp-int-java.sql.Timestamp-java.util.Calendar-)或[PreparedStatement.setTime\(int parameterIndex, java.sql.Time x, Calendar cal\)](https://docs.oracle.com/javase/8/docs/api/java/sql/PreparedStatement.html#setTime-int-java.sql.Time-java.util.Calendar-)，其中`java.util.Calendar`引用通过`hibernate.jdbc.time_zone`属性提供的时区。
+有了这个配置属性，Hibernate将调用[PreparedStatement.setTimestamp\(int parameterIndex，java.sql.Timestamp，Calendacalcal\)](https://docs.oracle.com/javase/8/docs/api/java/sql/PreparedStatement.html#setTimestamp-int-java.sql.Timestamp-java.util.Calendar-)或[PreparedStatement.setTime\(int parameterIndex, java.sql.Time x, Calendar cal\)](https://docs.oracle.com/javase/8/docs/api/java/sql/PreparedStatement.html#setTime-int-java.sql.Time-java.util.Calendar-)，其中`java.util.Calendar`引用由`hibernate.jdbc.time_zone`属性提供的时区。
 
