@@ -26,4 +26,5 @@
     * [2.3.10.映射UUID值](2yu-mo-xing/23ji-ben-lei-xing/2310.md)
     * [2.3.11.UUID作为binary](2yu-mo-xing/23ji-ben-lei-xing/2311uuidzuo-wei-er-jin-zhi.md)
     * [2.3.12.UUID作为\(var\)char](2yu-mo-xing/23ji-ben-lei-xing/2312uuidzuo-4e3a28-var-char.md)
+    * [2.3.13.PostgreSQL特定的UUID](2yu-mo-xing/23ji-ben-lei-xing/2313postgresqlte-ding-de-uuid.md)
 
