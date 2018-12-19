@@ -192,5 +192,26 @@ try (InputStream inputStream = product.getImage().getBinaryStream()) {
 }
 ```
 
+我们还可以以物化的形式（例如，`byte[]`）映射`BLOB`。
+
+###### 例45.BLOB映射到byte\[\]
+
+```java
+@Entity(name = "Product")
+public static class Product {
+
+    @Id
+    private Integer id;
+
+    private String name;
+
+    @Lob
+    private byte[] image;
+
+    //Getters and setters are omitted for brevity
+
+}
+```
+
 
 
