@@ -95,5 +95,17 @@ product.setWarranty( NClobProxy.generateProxy( warranty ) );
 entityManager.persist( product );
 ```
 
+要检索`NClob`内容，需要转换底层`java.io.Reader`：
+
+###### 例51.返回`java.sql.NClob`实体
+
+```java
+Product product = entityManager.find( Product.class, productId );
+
+try (Reader reader = product.getWarranty().getCharacterStream()) {
+    assertEquals( "My product warranty", toString( reader ) );
+}
+```
+
 
 
