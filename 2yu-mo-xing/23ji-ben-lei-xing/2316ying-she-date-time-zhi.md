@@ -72,5 +72,15 @@ INSERT INTO DateEvent ( timestamp, id )
 VALUES ( '16:51:58', 1 )
 ```
 
+当`@Temporal`类型设置为`TIMESTAMP`时：
+
+###### 例57.` java.util.Date`映射为`TIMESTAMP`
+
+```java
+@Column(name = "`timestamp`")
+@Temporal(TemporalType.TIMESTAMP)
+private Date timestamp;
+```
+
 
 
