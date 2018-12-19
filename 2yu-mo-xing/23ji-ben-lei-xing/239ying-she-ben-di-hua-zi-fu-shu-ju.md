@@ -12,7 +12,7 @@ JDBC 4添加了显式处理国家化字符数据的能力。为此，它添加�
 
 ###### 例46.`NVARCHAR`-SQL
 
-```SQL
+```java
 CREATE TABLE Product (
     id INTEGER NOT NULL ,
     name VARCHAR(255) ,
