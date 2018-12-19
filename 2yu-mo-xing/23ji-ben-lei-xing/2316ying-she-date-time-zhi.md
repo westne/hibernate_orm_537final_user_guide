@@ -53,5 +53,17 @@ INSERT INTO DateEvent ( timestamp, id )
 VALUES ( '2015-12-29', 1 )
 ```
 
+只有年、月和日字段被保存到数据库中。
+
+如果我们将`@Temporal`类型更改为`TIME`：
+
+###### 例56.`java.util.Date`映射为`TIME`
+
+```java
+@Column(name = "`timestamp`")
+@Temporal(TemporalType.TIME)
+private Date timestamp;
+```
+
 
 
