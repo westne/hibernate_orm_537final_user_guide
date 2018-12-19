@@ -129,5 +129,27 @@ public static class Product {
 }
 ```
 
+我们甚至可能希望将物化数据作为char数组。
+
+###### 例53.`NCLOB`- 物化`char[]`映射
+
+```java
+@Entity(name = "Product")
+public static class Product {
+
+    @Id
+    private Integer id;
+
+    private String name;
+
+    @Lob
+    @Nationalized
+    private char[] warranty;
+
+    //Getters and setters are omitted for brevity
+
+}
+```
+
 
 
