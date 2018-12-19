@@ -22,5 +22,5 @@
     * [2.3.6.自定义基本类型](2yu-mo-xing/23ji-ben-lei-xing/236zi-ding-yi-ji-ben-lei-xing.md)
     * [2.3.7.映射枚举类](2yu-mo-xing/23ji-ben-lei-xing/237ying-she-mei-ju-lei.md)
     * [2.3.8.映射LOBs](2yu-mo-xing/23ji-ben-lei-xing/238ying-she-lob.md)
-    * [2.3.9.映射本地化字符数据](2yu-mo-xing/23ji-ben-lei-xing/239ying-she-ben-di-hua-zi-fu-shu-ju.md)
+    * [2.3.9.映射国家化字符数据](2yu-mo-xing/23ji-ben-lei-xing/239ying-she-ben-di-hua-zi-fu-shu-ju.md)
 
