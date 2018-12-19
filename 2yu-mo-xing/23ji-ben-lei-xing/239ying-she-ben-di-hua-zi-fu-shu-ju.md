@@ -79,5 +79,21 @@ public static class Product {
 }
 ```
 
+要持久化这样的实体，必须使用`NClobProxy`Hibernate实用程序创建`NClob`：
+
+###### 例50.持久化`java.sql.NClob`实体
+
+```java
+String warranty = "My product warranty";
+
+final Product product = new Product();
+product.setId( 1 );
+product.setName( "Mobile phone" );
+
+product.setWarranty( NClobProxy.generateProxy( warranty ) );
+
+entityManager.persist( product );
+```
+
 
 
