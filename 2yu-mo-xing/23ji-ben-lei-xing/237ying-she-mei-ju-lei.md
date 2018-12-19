@@ -426,15 +426,15 @@ public class MoneyConverter
 @Entity(name = "Person")
 public static class Person {
 
-	@Id
-	private Long id;
+    @Id
+    private Long id;
 
-	private String name;
+    private String name;
 
-	@Type( type = "org.hibernate.userguide.mapping.basic.GenderType" )
-	public Gender gender;
+    @Type( type = "org.hibernate.userguide.mapping.basic.GenderType" )
+    public Gender gender;
 
-	//Getters and setters are omitted for brevity
+    //Getters and setters are omitted for brevity
 
 }
 
@@ -492,5 +492,19 @@ public class GenderJavaTypeDescriptor extends AbstractTypeDescriptor<Gender> {
 }
 ```
 
+同样，gender列被定义为CHAR类型，并将保存：
 
+###### `NULL`
+
+空值
+
+###### `“M”`
+
+男性枚举
+
+###### `“F”`
+
+女性枚举
+
+有关使用自定义类型的其他详细信息，请参阅[自定义BasicTypes](http://docs.jboss.org/hibernate/orm/current/userguide/html_single/Hibernate_User_Guide.html#basic-custom-type)部分。
 
