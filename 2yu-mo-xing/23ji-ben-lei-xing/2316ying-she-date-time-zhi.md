@@ -137,7 +137,7 @@ TimeZone.setDefault( TimeZone.getTimeZone( "UTC" ) );
 
 ###### 声明性地，在SessionFactory级别
 
-```bash
+```java
 settings.put(
     AvailableSettings.JDBC_TIME_ZONE,
     TimeZone.getTimeZone( "UTC" )
