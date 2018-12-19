@@ -21,5 +21,26 @@ CREATE TABLE Product (
 )
 ```
 
+为了将特定属性映射到国家化的变体数据类型，Hibernate定义了@Nationalized注解。
+
+###### 例47.`NVARCHAR`映射
+
+```java
+@Entity(name = "Product")
+public static class Product {
+
+    @Id
+    private Integer id;
+
+    private String name;
+
+    @Nationalized
+    private String warranty;
+
+    //Getters and setters are omitted for brevity
+
+}
+```
+
 
 
