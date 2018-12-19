@@ -194,7 +194,7 @@ try (InputStream inputStream = product.getImage().getBinaryStream()) {
 
 我们还可以以物化的形式（例如，`byte[]`）映射`BLOB`。
 
-###### 例45.BLOB映射到byte\[\]
+###### 例45.`BLOB`映射到`byte[]`
 
 ```java
 @Entity(name = "Product")
