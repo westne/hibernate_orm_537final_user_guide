@@ -151,5 +151,7 @@ public static class Product {
 }
 ```
 
+> 如果您的应用程序和数据库是完全国有化的，那么您可能希望将国有化的字符数据作为默认值启用。您可以通过`hibernate.use_nationalized_character_data`设置或通过在引导期间调用`MetadataBuilder#enableGlobalNationalizedCharacterDataSupport`来实现这一点。
+
 
 
