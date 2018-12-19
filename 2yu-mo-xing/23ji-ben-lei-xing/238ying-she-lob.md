@@ -33,7 +33,7 @@ CREATE TABLE Product (
 
 让我们首先使用`@Lob`JPA注解和`java.sql.Clob`类型对此进行映射：
 
-示例36.`CLOB`映射到`java.sql.Clob`
+###### 示例36.`CLOB`映射到`java.sql.Clob`
 
 ```java
 @Entity(name = "Product")
@@ -50,6 +50,22 @@ public static class Product {
     //Getters and setters are omitted for brevity
 
 }
+```
+
+要持久化这样的实体，必须使用`ClobProxy`Hibernate工具创建Clob：
+
+###### 例37.持久化`java.sql.Clob`实体
+
+```java
+String warranty = "My product warranty";
+
+final Product product = new Product();
+product.setId( 1 );
+product.setName( "Mobile phone" );
+
+product.setWarranty( ClobProxy.generateProxy( warranty ) );
+
+entityManager.persist( product );
 ```
 
 
