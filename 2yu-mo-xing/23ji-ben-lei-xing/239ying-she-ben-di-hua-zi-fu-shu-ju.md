@@ -107,5 +107,27 @@ try (Reader reader = product.getWarranty().getCharacterStream()) {
 }
 ```
 
+我们还可以以物化的形式映射`NCLOB`。这样，我们可以使用`String`或`char[]`。
+
+###### 例52.映射到`String`的`NCLOB`
+
+```java
+@Entity(name = "Product")
+public static class Product {
+
+    @Id
+    private Integer id;
+
+    private String name;
+
+    @Lob
+    @Nationalized
+    private String warranty;
+
+    //Getters and setters are omitted for brevity
+
+}
+```
+
 
 
