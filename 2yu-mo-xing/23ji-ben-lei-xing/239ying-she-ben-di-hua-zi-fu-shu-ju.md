@@ -55,5 +55,29 @@ CREATE TABLE Product (
 )
 ```
 
+Hibernate可以将`NCLOB`映射到`java.sql.NClob`
+
+###### 例49.映射到`java.sql.NClob`的`NCLOB`
+
+```java
+@Entity(name = "Product")
+public static class Product {
+
+    @Id
+    private Integer id;
+
+    private String name;
+
+    @Lob
+    @Nationalized
+    // Clob also works, because NClob extends Clob.
+    // The database type is still NCLOB either way and handled as such.
+    private NClob warranty;
+
+    //Getters and setters are omitted for brevity
+
+}
+```
+
 
 
