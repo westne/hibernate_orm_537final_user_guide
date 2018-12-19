@@ -109,11 +109,40 @@ Java 8附带了一个新的Date/Time API，它支持Java.Times包中的即时日
 
 `java.time.Instant`,`java.time.LocalDateTime`,`java.time.OffsetDateTime`和`java.time.ZonedDateTime`
 
-> 因为Java 8日期/时间类与SQL类型之间的映射是隐式的，所以不需要指定`@Temporal `注释。将其设置在`java.times`类上会引发以下异常：
+> 因为Java 8日期/时间类与SQL类型之间的映射是隐式的，所以不需要指定`@Temporal`注释。将其设置在`java.times`类上会引发以下异常：
 >
 > `org.hibernate.AnnotationException: @Temporal should only be set on a java.util.Date or java.util.Calendar property`
 
+#### 使用特定时区
 
+默认情况下，Hibernate在保存java.sql.Timestamp或者java.sql.Time属性时，将使用[PreparedStatement.setTimestamp\(int parameterIndex, java.sql.Timestamp\)](https://docs.oracle.com/javase/8/docs/api/java/sql/PreparedStatement.html#setTimestamp-int-java.sql.Timestamp-)或者[PreparedStatement.setTime\(int parameterIndex, java.sql.Time x\)](https://docs.oracle.com/javase/8/docs/api/java/sql/PreparedStatement.html#setTime-int-java.sql.Time-)。
+
+当没有指定时区时，JDBC驱动程序将使用底层的JVM默认时区，如果应用程序来自全球各地，这可能不适合。由于这个原因，每当从数据库保存/加载数据时，使用单个参考时区（例如，UTC）是非常常见的。
+
+一种替代方法是配置所有JVM以使用参考时区：
+
+###### 声明地
+
+```java
+java -Duser.timezone=UTC ...
+```
+
+###### 以编程方式
+
+```java
+TimeZone.setDefault( TimeZone.getTimeZone( "UTC" ) );
+```
+
+然而，正如[本文](http://in.relation.to/2016/09/12/jdbc-time-zone-configuration-property/)中所解释的，这并不总是实用的，尤其是对于前端节点。为此，Hibernate提供了`hibernate.jdbc.time_zone`配置属性，该属性可以被配置：
+
+###### 声明性地，在SessionFactory级别
+
+```bash
+settings.put(
+    AvailableSettings.JDBC_TIME_ZONE,
+    TimeZone.getTimeZone( "UTC" )
+);
+```
 
 
 
