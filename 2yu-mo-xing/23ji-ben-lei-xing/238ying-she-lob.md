@@ -80,5 +80,26 @@ try (Reader reader = product.getWarranty().getCharacterStream()) {
 }
 ```
 
+我们还可以以物化的形式映射`CLOB`。这样，我们可以使用String或char\[\]。
+
+###### 例39.CLOB被映射到字符串
+
+```java
+@Entity(name = "Product")
+public static class Product {
+
+	@Id
+	private Integer id;
+
+	private String name;
+
+	@Lob
+	private String warranty;
+
+	//Getters and setters are omitted for brevity
+
+}
+```
+
 
 
