@@ -46,5 +46,12 @@ DateEvent dateEvent = new DateEvent( new Date() );
 entityManager.persist( dateEvent );
 ```
 
+Hibernate生成以下INSERT语句：
+
+```java
+INSERT INTO DateEvent ( timestamp, id )
+VALUES ( '2015-12-29', 1 )
+```
+
 
 
