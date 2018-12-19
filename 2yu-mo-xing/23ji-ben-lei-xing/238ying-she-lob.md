@@ -180,5 +180,17 @@ product.setImage( BlobProxy.generateProxy( image ) );
 entityManager.persist( product );
 ```
 
+要检索`Blob`内容，需要转换底层`java.io.InputStream`：
+
+###### 例44.返回`java.sql.Blob`实体
+
+```java
+Product product = entityManager.find( Product.class, productId );
+
+try (InputStream inputStream = product.getImage().getBinaryStream()) {
+    assertArrayEquals(new byte[] {1, 2, 3}, toBytes( inputStream ) );
+}
+```
+
 
 
