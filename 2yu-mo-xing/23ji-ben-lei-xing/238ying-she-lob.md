@@ -31,5 +31,26 @@ CREATE TABLE Product (
 )
 ```
 
+让我们首先使用`@Lob`JPA注解和`java.sql.Clob`类型对此进行映射：
+
+示例36.`CLOB`映射到`java.sql.Clob`
+
+```java
+@Entity(name = "Product")
+public static class Product {
+
+    @Id
+    private Integer id;
+
+    private String name;
+
+    @Lob
+    private Clob warranty;
+
+    //Getters and setters are omitted for brevity
+
+}
+```
+
 
 
