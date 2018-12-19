@@ -74,12 +74,19 @@ VALUES ( '16:51:58', 1 )
 
 当`@Temporal`类型设置为`TIMESTAMP`时：
 
-###### 例57.` java.util.Date`映射为`TIMESTAMP`
+###### 例57.`java.util.Date`映射为`TIMESTAMP`
 
 ```java
 @Column(name = "`timestamp`")
 @Temporal(TemporalType.TIMESTAMP)
 private Date timestamp;
+```
+
+Hibernate将在INSERT语句中包括DATE、TIME和纳秒：
+
+```java
+INSERT INTO DateEvent ( timestamp, id )
+VALUES ( '2015-12-29 16:54:04.544', 1 )
 ```
 
 
