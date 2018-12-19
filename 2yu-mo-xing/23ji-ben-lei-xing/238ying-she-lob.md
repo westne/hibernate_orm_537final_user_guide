@@ -109,7 +109,22 @@ public static class Product {
 
 ###### 例40._CLOB-物化_`char[]`_映射_
 
+```java
+@Entity(name = "Product")
+public static class Product {
 
+	@Id
+	private Integer id;
+
+	private String name;
+
+	@Lob
+	private char[] warranty;
+
+	//Getters and setters are omitted for brevity
+
+}
+```
 
 
 
