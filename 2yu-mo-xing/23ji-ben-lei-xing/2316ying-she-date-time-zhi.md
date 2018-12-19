@@ -89,5 +89,7 @@ INSERT INTO DateEvent ( timestamp, id )
 VALUES ( '2015-12-29 16:54:04.544', 1 )
 ```
 
+> 与`java.util.Date`一样，`java.util.Calendar`需要`@Temporal`注释，以便知道要选择什么JDBC数据类型：`DATE`、`TIME`或`TIMESTAMP`。如果`java.util.Date`标记了一个时间点，那么`java.util.Calendar`将考虑默认时区。
+
 
 
