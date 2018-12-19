@@ -42,5 +42,7 @@ public static class Product {
 }
 ```
 
+与`CLOB`一样，Hibernate也可以处理`NCLOB`SQL数据类型：
 
+例48.`NCLOB`- SQL
 
