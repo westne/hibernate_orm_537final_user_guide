@@ -588,7 +588,3 @@ VALUES ('Tue Mar 01 10:58:18 EET 2016', 1)
 
 可以看到，`new Date()`对象值用于指定`timestamp`列值。
 
-
-
-
-
