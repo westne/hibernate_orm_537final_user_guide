@@ -72,5 +72,25 @@ Hibernate还可以使用以下配置属性引用所有标识符（例如，表�
 />
 ```
 
+这样，我们不需要手动引用任何标识符：
+
+###### 例64.JPA引用
+
+```java
+@Entity(name = "Product")
+public static class Product {
+
+	@Id
+	private Long id;
+
+	private String name;
+
+	private String number;
+
+	//Getters and setters are omitted for brevity
+
+}
+```
+
 
 
