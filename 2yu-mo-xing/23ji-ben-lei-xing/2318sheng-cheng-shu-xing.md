@@ -176,49 +176,88 @@ WHERE
 ```java
 public static class CurrentUser {
 
-	public static final CurrentUser INSTANCE = new CurrentUser();
+    public static final CurrentUser INSTANCE = new CurrentUser();
 
-	private static final ThreadLocal<String> storage = new ThreadLocal<>();
+    private static final ThreadLocal<String> storage = new ThreadLocal<>();
 
-	public void logIn(String user) {
-		storage.set( user );
-	}
+    public void logIn(String user) {
+        storage.set( user );
+    }
 
-	public void logOut() {
-		storage.remove();
-	}
+    public void logOut() {
+        storage.remove();
+    }
 
-	public String get() {
-		return storage.get();
-	}
+    public String get() {
+        return storage.get();
+    }
 }
 
 public static class LoggedUserGenerator implements ValueGenerator<String> {
 
-	@Override
-	public String generateValue(
-			Session session, Object owner) {
-		return CurrentUser.INSTANCE.get();
-	}
+    @Override
+    public String generateValue(
+            Session session, Object owner) {
+        return CurrentUser.INSTANCE.get();
+    }
 }
 
 @Entity(name = "Person")
 public static class Person {
 
-	@Id
-	private Long id;
+    @Id
+    private Long id;
 
-	private String firstName;
+    private String firstName;
 
-	private String lastName;
+    private String lastName;
 
-	@GeneratorType( type = LoggedUserGenerator.class, when = GenerationTime.INSERT)
-	private String createdBy;
+    @GeneratorType( type = LoggedUserGenerator.class, when = GenerationTime.INSERT)
+    private String createdBy;
 
-	@GeneratorType( type = LoggedUserGenerator.class, when = GenerationTime.ALWAYS)
-	private String updatedBy;
+    @GeneratorType( type = LoggedUserGenerator.class, when = GenerationTime.ALWAYS)
+    private String updatedBy;
 
 }
+```
+
+当持久化Person实体时，Hibernate将使用当前记录的用户填充`createdBy`列。
+
+###### 例69.`@Generated`持久化示例
+
+```java
+CurrentUser.INSTANCE.logIn( "Alice" );
+
+doInJPA( this::entityManagerFactory, entityManager -> {
+
+	Person person = new Person();
+	person.setId( 1L );
+	person.setFirstName( "John" );
+	person.setLastName( "Doe" );
+
+	entityManager.persist( person );
+} );
+
+CurrentUser.INSTANCE.logOut();
+```
+
+```java
+INSERT INTO Person
+(
+    createdBy,
+    firstName,
+    lastName,
+    updatedBy,
+    id
+)
+VALUES
+(?, ?, ?, ?, ?)
+
+-- binding parameter [1] as [VARCHAR] - [Alice]
+-- binding parameter [2] as [VARCHAR] - [John]
+-- binding parameter [3] as [VARCHAR] - [Doe]
+-- binding parameter [4] as [VARCHAR] - [Alice]
+-- binding parameter [5] as [BIGINT]  - [1]
 ```
 
 
