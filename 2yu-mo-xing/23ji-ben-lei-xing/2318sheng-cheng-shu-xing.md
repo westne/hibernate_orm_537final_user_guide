@@ -430,5 +430,9 @@ where
 -- binding parameter [4] as [BIGINT]    - [1]
 ```
 
+##### `@ValueGenerationType`元注解 {#mapping-generated-ValueGenerationType}
+
+
+
 
 
