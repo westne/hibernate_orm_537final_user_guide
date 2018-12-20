@@ -99,5 +99,9 @@ INSERT INTO "Product" ("name", "number", "id")
 VALUES ('Mobile phone', '123-456-7890', 1)
 ```
 
+如您所见，表名和所有列都被引用了。
+
+有关引用相关配置属性的更多信息，请参阅[映射配置](http://docs.jboss.org/hibernate/orm/current/userguide/html_single/Hibernate_User_Guide.html#configurations-mapping)部分。
+
 
 
