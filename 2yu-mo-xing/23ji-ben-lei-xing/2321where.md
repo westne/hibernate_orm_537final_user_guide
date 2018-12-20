@@ -1,4 +1,6 @@
+```
 有时，您希望使用自定义的SQL criteria筛选出实体或集合。这可以通过使用@Where注解来实现，它可以应用于实体和集合。
+```
 
 ###### 例83.`@where`映射使用
 
@@ -60,41 +62,55 @@ public static class Account {
 ```java
 doInJPA( this::entityManagerFactory, entityManager -> {
 
-	Client client = new Client();
-	client.setId( 1L );
-	client.setName( "John Doe" );
-	entityManager.persist( client );
+    Client client = new Client();
+    client.setId( 1L );
+    client.setName( "John Doe" );
+    entityManager.persist( client );
 
-	Account account1 = new Account( );
-	account1.setId( 1L );
-	account1.setType( AccountType.CREDIT );
-	account1.setAmount( 5000d );
-	account1.setRate( 1.25 / 100 );
-	account1.setActive( true );
-	account1.setClient( client );
-	client.getCreditAccounts().add( account1 );
-	entityManager.persist( account1 );
+    Account account1 = new Account( );
+    account1.setId( 1L );
+    account1.setType( AccountType.CREDIT );
+    account1.setAmount( 5000d );
+    account1.setRate( 1.25 / 100 );
+    account1.setActive( true );
+    account1.setClient( client );
+    client.getCreditAccounts().add( account1 );
+    entityManager.persist( account1 );
 
-	Account account2 = new Account( );
-	account2.setId( 2L );
-	account2.setType( AccountType.DEBIT );
-	account2.setAmount( 0d );
-	account2.setRate( 1.05 / 100 );
-	account2.setActive( false );
-	account2.setClient( client );
-	client.getDebitAccounts().add( account2 );
-	entityManager.persist( account2 );
+    Account account2 = new Account( );
+    account2.setId( 2L );
+    account2.setType( AccountType.DEBIT );
+    account2.setAmount( 0d );
+    account2.setRate( 1.05 / 100 );
+    account2.setActive( false );
+    account2.setClient( client );
+    client.getDebitAccounts().add( account2 );
+    entityManager.persist( account2 );
 
-	Account account3 = new Account( );
-	account3.setType( AccountType.DEBIT );
-	account3.setId( 3L );
-	account3.setAmount( 250d );
-	account3.setRate( 1.05 / 100 );
-	account3.setActive( true );
-	account3.setClient( client );
-	client.getDebitAccounts().add( account3 );
-	entityManager.persist( account3 );
+    Account account3 = new Account( );
+    account3.setType( AccountType.DEBIT );
+    account3.setId( 3L );
+    account3.setAmount( 250d );
+    account3.setRate( 1.05 / 100 );
+    account3.setActive( true );
+    account3.setClient( client );
+    client.getDebitAccounts().add( account3 );
+    entityManager.persist( account3 );
 } );
+```
+
+```java
+INSERT INTO Client (name, id)
+VALUES ('John Doe', 1)
+
+INSERT INTO Account (active, amount, client_id, rate, account_type, id)
+VALUES (true, 5000.0, 1, 0.0125, 'CREDIT', 1)
+
+INSERT INTO Account (active, amount, client_id, rate, account_type, id)
+VALUES (false, 0.0, 1, 0.0105, 'DEBIT', 2)
+
+INSERT INTO Account (active, amount, client_id, rate, account_type, id)
+VALUES (true, 250.0, 1, 0.0105, 'DEBIT', 3)
 ```
 
 
