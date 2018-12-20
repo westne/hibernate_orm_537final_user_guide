@@ -8,9 +8,11 @@
 
 `INSERT`
 
-给出的属性值在插入时被生成，但是子序列更新时不生成。属性如_`creationTimestamp`_归为这个分类。
+给出的属性值在插入时被生成，但是子序列更新时不生成。属性如`creationTimestamp`归为这个分类。
 
 `ALWAYS`
 
 属性值在插入和更新时都生成。
+
+若要将属性标记为被生成的，请使用Hibernate特定的`@Generated`注解。
 
