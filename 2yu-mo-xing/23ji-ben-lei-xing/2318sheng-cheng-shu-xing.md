@@ -294,7 +294,7 @@ WHERE
 
 ##### `@CreationTimestamp`注解 {#mapping-generated-CreationTimestamp}
 
-`@CreationTimestamp`注解指示Hibernate在持久化实体时使用JVM的当前时间戳值设置带注释的实体属性。
+`@CreationTimestamp`注解指示Hibernate在持久化实体时使用JVM的当前时间戳值设置带注解的实体属性。
 
 支持的属性类型是：
 
