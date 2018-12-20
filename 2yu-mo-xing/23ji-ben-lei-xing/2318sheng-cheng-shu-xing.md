@@ -230,12 +230,12 @@ CurrentUser.INSTANCE.logIn( "Alice" );
 
 doInJPA( this::entityManagerFactory, entityManager -> {
 
-	Person person = new Person();
-	person.setId( 1L );
-	person.setFirstName( "John" );
-	person.setLastName( "Doe" );
+    Person person = new Person();
+    person.setId( 1L );
+    person.setFirstName( "John" );
+    person.setLastName( "Doe" );
 
-	entityManager.persist( person );
+    entityManager.persist( person );
 } );
 
 CurrentUser.INSTANCE.logOut();
@@ -257,6 +257,38 @@ VALUES
 -- binding parameter [2] as [VARCHAR] - [John]
 -- binding parameter [3] as [VARCHAR] - [Doe]
 -- binding parameter [4] as [VARCHAR] - [Alice]
+-- binding parameter [5] as [BIGINT]  - [1]
+```
+
+更新Person实体时也是如此。Hibernate将使用当前记录的用户填充`updatedBy`列。
+
+###### 例70.`@Generated`更新示例
+
+```java
+CurrentUser.INSTANCE.logIn( "Bob" );
+
+doInJPA( this::entityManagerFactory, entityManager -> {
+	Person person = entityManager.find( Person.class, 1L );
+	person.setFirstName( "Mr. John" );
+} );
+
+CurrentUser.INSTANCE.logOut();
+```
+
+```java
+UPDATE Person
+SET
+    createdBy = ?,
+    firstName = ?,
+    lastName = ?,
+    updatedBy = ?
+WHERE
+    id = ?
+
+-- binding parameter [1] as [VARCHAR] - [Alice]
+-- binding parameter [2] as [VARCHAR] - [Mr. John]
+-- binding parameter [3] as [VARCHAR] - [Doe]
+-- binding parameter [4] as [VARCHAR] - [Bob]
 -- binding parameter [5] as [BIGINT]  - [1]
 ```
 
