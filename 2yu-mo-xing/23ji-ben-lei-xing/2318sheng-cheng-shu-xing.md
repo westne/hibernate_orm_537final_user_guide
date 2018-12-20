@@ -432,5 +432,5 @@ where
 
 ##### `@ValueGenerationType`元注解 {#mapping-generated-ValueGenerationType}
 
-
+Hibernate 4.3引入了@ValueGenerationType元注解，这是一种声明生成的属性或自定义生成器的新方法。
 
