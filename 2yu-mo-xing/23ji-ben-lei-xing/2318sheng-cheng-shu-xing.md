@@ -432,5 +432,9 @@ where
 
 ##### `@ValueGenerationType`元注解 {#mapping-generated-ValueGenerationType}
 
-Hibernate 4.3引入了@ValueGenerationType元注解，这是一种声明生成的属性或自定义生成器的新方法。
+Hibernate 4.3引入了`@ValueGenerationType`元注解，这是一种声明生成的属性或自定义生成器的新方法。
+
+`@Generated`已经被翻新为使用`@ValueGenerationType`元注解。但是`@ValueGenerationType`公开了比`@Generated`当前支持的特性更多的特性，并且为了利用其中的一些特性，您只需要连接一个新的生成器注释。
+
+如下面的示例所示，在声明用于标记需要特定生成策略的实体属性的自定义注释时，将使用`@ValueGenerationType`元注释。必须将实际的生成逻辑添加到实现`AnnotationValueGeneration`接口的类中。
 
