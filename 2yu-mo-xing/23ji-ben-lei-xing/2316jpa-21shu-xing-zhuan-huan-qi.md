@@ -53,7 +53,7 @@ INSERT INTO Event ( span, id )
 VALUES ( 'P1Y2M3D', 1 )
 ```
 
-#### `AttributeConverter` Java和JDBC类型
+##### `AttributeConverter` Java和JDBC类型
 
 在转换的“数据库侧”所指定的Java类型（第二个`AttributeConverter`绑定参数）不知道的情况下，Hibernate将回落到`java.io.Serializable`类型。
 
@@ -65,13 +65,13 @@ Java类型是否为“已知”意味着它在JavaTypeDescriptorRegistry中有�
 
 这样，Hibernate也将知道如何在JDBC级别处理特定的Java对象类型。
 
-#### JPA 2.1`AttributeConverter`易变性计划
+##### JPA 2.1`AttributeConverter`易变性计划
 
 一个被JPA`AttributeConverter`转变的基本类型是不可变的，如果底层的Java类型不可变，反之如果关联的属性类型可变则也可变。
 
 因此，关联的实体属性类型的[`JavaTypeDescriptor#getMutabilityPlan`](https://docs.jboss.org/hibernate/orm/5.3/javadocs/org/hibernate/type/descriptor/java/JavaTypeDescriptor.html#getMutabilityPlan--)提供了可变性。
 
-#### 不可变类型
+##### 不可变类型
 
 如果实体属性是`String`、基本类型包装类（例如，`Integer`、`Long`）、Enum类型或任何其他不可变`Object`类型，则只能通过将实体属性值重新分配到新值来更改实体属性值。
 
@@ -105,7 +105,7 @@ event.setSpan(Period
 );
 ```
 
-#### 可变类型
+##### 可变类型
 
 另一方面，考虑以下示例，其中Money类型是可变的。
 

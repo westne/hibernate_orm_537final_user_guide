@@ -16,7 +16,7 @@
 
 若要将属性标记为被生成的，请使用Hibernate特定的`@Generated`注解。
 
-#### `@Generated`注解
+##### `@Generated`注解
 
 使用`@Generated`注解，以便在实体被持久化或更新之后，Hibernate可以获取当前已注解的属性。由于这个原因，`@Generated`注解接受[`GenerationTime`](https://docs.jboss.org/hibernate/orm/5.3/javadocs/org/hibernate/annotations/GenerationTime.html)枚举值。
 
@@ -163,7 +163,7 @@ WHERE
 -- extracted value ([fullName3_0_] : [VARCHAR]) - [John Flávio André Frederico Rúben Artur Doe Jr]
 ```
 
-#### `@GeneratorType`注解
+##### `@GeneratorType`注解
 
 使用`@GeneratorType`注解可以提供自定义生成器来设置当前注释的属性的值。
 
@@ -268,8 +268,8 @@ VALUES
 CurrentUser.INSTANCE.logIn( "Bob" );
 
 doInJPA( this::entityManagerFactory, entityManager -> {
-	Person person = entityManager.find( Person.class, 1L );
-	person.setFirstName( "Mr. John" );
+    Person person = entityManager.find( Person.class, 1L );
+    person.setFirstName( "Mr. John" );
 } );
 
 CurrentUser.INSTANCE.logOut();

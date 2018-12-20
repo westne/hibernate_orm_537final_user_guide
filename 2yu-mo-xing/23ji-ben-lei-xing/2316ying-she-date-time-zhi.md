@@ -91,7 +91,7 @@ VALUES ( '2015-12-29 16:54:04.544', 1 )
 
 > 与`java.util.Date`一样，`java.util.Calendar`需要`@Temporal`注释，以便知道要选择什么JDBC数据类型：DATE、TIME或TIMESTAMP。如果`java.util.Date`标记了一个时间点，那么`java.util.Calendar`将考虑默认时区。
 
-#### 映射Java 8 Date/Time值
+##### 映射Java 8 Date/Time值
 
 Java 8附带了一个新的Date/Time API，它支持Java.Times包中的即时日期、间隔、本地和分区Date/Time不可变实例。
 
@@ -113,7 +113,7 @@ Java 8附带了一个新的Date/Time API，它支持Java.Times包中的即时日
 >
 > `org.hibernate.AnnotationException: @Temporal should only be set on a java.util.Date or java.util.Calendar property`
 
-#### 使用特定时区
+##### 使用特定时区
 
 默认情况下，Hibernate在保存java.sql.Timestamp或者java.sql.Time属性时，将使用[PreparedStatement.setTimestamp\(int parameterIndex, java.sql.Timestamp\)](https://docs.oracle.com/javase/8/docs/api/java/sql/PreparedStatement.html#setTimestamp-int-java.sql.Timestamp-)或者[PreparedStatement.setTime\(int parameterIndex, java.sql.Time x\)](https://docs.oracle.com/javase/8/docs/api/java/sql/PreparedStatement.html#setTime-int-java.sql.Time-)。
 

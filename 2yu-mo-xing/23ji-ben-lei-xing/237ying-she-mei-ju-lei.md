@@ -1,6 +1,6 @@
 Hibernate支持Java枚举类的映射作为基本值类型，以许多不同的方式。
 
-#### `@Enumerated`
+##### `@Enumerated`
 
 最初的与JPA兼容的映射枚举的方法是通过`@Enumerate`或`@MapKeyEnumerated`作为映射键注释，其原理是枚举值根据javax.persistence.EnumType所指示的两种策略之一进行存储：
 
@@ -112,7 +112,7 @@ INSERT INTO Phone (phone_number, phone_type, id)
 VALUES ('123-456-78990', 'MOBILE', 1)
 ```
 
-#### 属性转换器
+##### AttributeConvertor
 
 让我们考虑下面的Gender枚举，它使用“M”和“F”代码存储它的值。
 
@@ -208,7 +208,7 @@ public static class GenderConverter
 
 > JPA明确地禁止使用带有标记为`@Enumerated`的属性的AttributeConverter。因此，如果使用AttributeConverter方法，请确保不要将属性标记为`@Enumerated`。
 
-#### 使用AttributeConverter实体属性作为查询参数
+##### 使用AttributeConverter实体属性作为查询参数
 
 假设您具有以下实体：
 
@@ -329,7 +329,7 @@ Photo photo = (Photo) entityManager.createQuery(
 
 通过传递相关联的Hibernate`Type`，您可以在绑定查询参数值时使用`Caption`对象。
 
-#### 使用HBM映射映射属性转换器
+##### 使用HBM映射映射属性转换器
 
 当使用HBM映射时，您仍然可以使用JPA`AttributeConverter`，因为Hibernate通过类型属性支持这种映射，如下面的示例所示。
 
@@ -416,7 +416,7 @@ public class MoneyConverter
 </hibernate-mapping>
 ```
 
-#### 自定义类型
+##### 自定义类型
 
 您还可以使用Hibernate自定义类型映射来映射枚举。让我们再次访问Gender枚举示例，这次使用自定义类型存储更标准化的“M”和“F”代码。
 
