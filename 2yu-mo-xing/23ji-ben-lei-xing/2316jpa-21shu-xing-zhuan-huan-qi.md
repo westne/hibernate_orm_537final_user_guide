@@ -57,3 +57,5 @@ VALUES ( 'P1Y2M3D', 1 )
 
 在为转换的“数据库侧”指定的Java类型（第二个`AttributeConverter`绑定参数）不知道的情况下，Hibernate将回落到`java.io.Serializable`类型。
 
+如果Java类型是Hibernate不知道的，您将遇到以下消息：
+
