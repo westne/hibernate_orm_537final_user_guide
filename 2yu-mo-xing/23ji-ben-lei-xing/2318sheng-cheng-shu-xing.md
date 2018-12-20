@@ -28,38 +28,40 @@
 @Entity(name = "Person")
 public static class Person {
 
-	@Id
-	private Long id;
+    @Id
+    private Long id;
 
-	private String firstName;
+    private String firstName;
 
-	private String lastName;
+    private String lastName;
 
-	private String middleName1;
+    private String middleName1;
 
-	private String middleName2;
+    private String middleName2;
 
-	private String middleName3;
+    private String middleName3;
 
-	private String middleName4;
+    private String middleName4;
 
-	private String middleName5;
+    private String middleName5;
 
-	@Generated( value = GenerationTime.ALWAYS )
-	@Column(columnDefinition =
-		"AS CONCAT(" +
-		"	COALESCE(firstName, ''), " +
-		"	COALESCE(' ' + middleName1, ''), " +
-		"	COALESCE(' ' + middleName2, ''), " +
-		"	COALESCE(' ' + middleName3, ''), " +
-		"	COALESCE(' ' + middleName4, ''), " +
-		"	COALESCE(' ' + middleName5, ''), " +
-		"	COALESCE(' ' + lastName, '') " +
-		")")
-	private String fullName;
+    @Generated( value = GenerationTime.ALWAYS )
+    @Column(columnDefinition =
+        "AS CONCAT(" +
+        "    COALESCE(firstName, ''), " +
+        "    COALESCE(' ' + middleName1, ''), " +
+        "    COALESCE(' ' + middleName2, ''), " +
+        "    COALESCE(' ' + middleName3, ''), " +
+        "    COALESCE(' ' + middleName4, ''), " +
+        "    COALESCE(' ' + middleName5, ''), " +
+        "    COALESCE(' ' + lastName, '') " +
+        ")")
+    private String fullName;
 
 }
 ```
 
+当持久化`Person`实体时，Hibernate将从数据库获取计算的fullName列，该列连接first、middle和last姓名。
 
+例66.`@Generated`持久化示例
 
