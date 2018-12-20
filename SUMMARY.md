@@ -33,4 +33,5 @@
     * [2.3.17.SQL引号标识符](2yu-mo-xing/23ji-ben-lei-xing/2317sqlyin-hao-biao-shi-fu.md)
     * [2.3.18.生成属性](2yu-mo-xing/23ji-ben-lei-xing/2318sheng-cheng-shu-xing.md)
     * [2.3.19.列变换器：读和写表达式](2yu-mo-xing/23ji-ben-lei-xing/2319lie-bian-huan-qi-ff1a-du-he-xie-biao-da-shi.md)
+    * [2.3.20.@Formula](2yu-mo-xing/23ji-ben-lei-xing/2320formula.md)
 
