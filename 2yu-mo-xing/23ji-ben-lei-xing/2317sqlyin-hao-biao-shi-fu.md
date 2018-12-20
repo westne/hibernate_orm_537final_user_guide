@@ -61,5 +61,16 @@ INSERT INTO Product ("name", "number", id)
 VALUES ('Mobile phone', '123-456-7890', 1)
 ```
 
+#### 全局引用
+
+Hibernate还可以使用以下配置属性引用所有标识符（例如，表、列）：
+
+```java
+<property
+    name="hibernate.globally_quoted_identifiers"
+    value="true"
+/>
+```
+
 
 
