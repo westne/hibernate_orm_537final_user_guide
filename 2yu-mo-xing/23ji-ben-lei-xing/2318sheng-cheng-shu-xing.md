@@ -80,6 +80,9 @@ entityManager.persist( person );
 entityManager.flush();
 
 assertEquals("John Flávio André Frederico Rúben Artur Doe", person.getFullName());
+```
+
+```
 INSERT INTO Person
 (
     firstName,
