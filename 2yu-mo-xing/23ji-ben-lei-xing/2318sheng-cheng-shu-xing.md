@@ -16,3 +16,13 @@
 
 若要将属性标记为被生成的，请使用Hibernate特定的`@Generated`注解。
 
+#### `@Generated`注解
+
+使用`@Generated`注解，以便在实体被持久化或更新之后，Hibernate可以获取当前已注解的属性。由于这个原因，`@Generated`注解接受`GenerationTime`枚举值。
+
+考虑以下实体：
+
+###### 例65.`@Generated`映射示例
+
+
+
