@@ -53,5 +53,9 @@ INSERT INTO Event ( span, id )
 VALUES ( 'P1Y2M3D', 1 )
 ```
 
+#### `AttributeConverter` Java和JDBC类型
+
+在为转换的“数据库侧”指定的Java类型（第二个AttributeConverter绑定参数）不知道的情况下，Hibernate将回落到java.io.Serializable类型。
+
 
 
