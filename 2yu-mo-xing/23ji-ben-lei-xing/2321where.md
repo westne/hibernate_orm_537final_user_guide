@@ -145,9 +145,9 @@ WHERE ( a.active = true )
 
 ```java
 doInJPA( this::entityManagerFactory, entityManager -> {
-	Client client = entityManager.find( Client.class, 1L );
-	assertEquals( 1, client.getCreditAccounts().size() );
-	assertEquals( 1, client.getDebitAccounts().size() );
+    Client client = entityManager.find( Client.class, 1L );
+    assertEquals( 1, client.getCreditAccounts().size() );
+    assertEquals( 1, client.getDebitAccounts().size() );
 } );
 ```
 
