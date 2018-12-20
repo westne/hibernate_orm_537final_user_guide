@@ -80,16 +80,23 @@ Hibernate还可以使用以下配置属性引用所有标识符（例如，表�
 @Entity(name = "Product")
 public static class Product {
 
-	@Id
-	private Long id;
+    @Id
+    private Long id;
 
-	private String name;
+    private String name;
 
-	private String number;
+    private String number;
 
-	//Getters and setters are omitted for brevity
+    //Getters and setters are omitted for brevity
 
 }
+```
+
+当持久化Product实体时，Hibernate将引用所有标识符，如下面的示例所示：
+
+```java
+INSERT INTO "Product" ("name", "number", "id")
+VALUES ('Mobile phone', '123-456-7890', 1)
 ```
 
 
