@@ -112,38 +112,46 @@ event.setSpan(Period
 ```java
 public static class Money {
 
-	private long cents;
+    private long cents;
 
-	//Getters and setters are omitted for brevity
+    //Getters and setters are omitted for brevity
 }
 
 @Entity(name = "Account")
 public static class Account {
 
-	@Id
-	private Long id;
+    @Id
+    private Long id;
 
-	private String owner;
+    private String owner;
 
-	@Convert(converter = MoneyConverter.class)
-	private Money balance;
+    @Convert(converter = MoneyConverter.class)
+    private Money balance;
 
-	//Getters and setters are omitted for brevity
+    //Getters and setters are omitted for brevity
 }
 
 public static class MoneyConverter
-		implements AttributeConverter<Money, Long> {
+        implements AttributeConverter<Money, Long> {
 
-	@Override
-	public Long convertToDatabaseColumn(Money attribute) {
-		return attribute == null ? null : attribute.getCents();
-	}
+    @Override
+    public Long convertToDatabaseColumn(Money attribute) {
+        return attribute == null ? null : attribute.getCents();
+    }
 
-	@Override
-	public Money convertToEntityAttribute(Long dbData) {
-		return dbData == null ? null : new Money( dbData );
-	}
+    @Override
+    public Money convertToEntityAttribute(Long dbData) {
+        return dbData == null ? null : new Money( dbData );
+    }
 }
+```
+
+可变对象允许您修改其内部结构，Hibernate脏检查机制将把更改传播到数据库：
+
+```java
+Account account = entityManager.find( Account.class, 1L );
+account.getBalance().setCents( 150 * 100L );
+entityManager.persist( account );
 ```
 
 
