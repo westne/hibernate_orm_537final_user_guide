@@ -154,5 +154,9 @@ account.getBalance().setCents( 150 * 100L );
 entityManager.persist( account );
 ```
 
+> 尽管`AttributeConverter`类型可以是可变的，因此脏检查、深度复制和第二级缓存可以正常工作，但是将这些类型视为不可变的（当它们确实是时）更有效。
+>
+> 由于这个原因，尽可能地选择不可变类型而不是可变类型。
+
 
 
