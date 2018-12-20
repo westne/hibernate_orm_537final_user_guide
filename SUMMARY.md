@@ -31,4 +31,5 @@
     * [2.3.15.映射Date/Time值](2yu-mo-xing/23ji-ben-lei-xing/2316ying-she-date-time-zhi.md)
     * [2.3.16.JPA 2.1属性转换器](2yu-mo-xing/23ji-ben-lei-xing/2316jpa-21shu-xing-zhuan-huan-qi.md)
     * [2.3.17.SQL引号标识符](2yu-mo-xing/23ji-ben-lei-xing/2317sqlyin-hao-biao-shi-fu.md)
+    * [2.3.18.生成属性](2yu-mo-xing/23ji-ben-lei-xing/2318sheng-cheng-shu-xing.md)
 
