@@ -165,6 +165,14 @@ WHERE
 
 #### `@GeneratorType`注解
 
+使用`@GeneratorType`注解可以提供自定义生成器来设置当前注释的属性的值。
+
+因此，`@GeneratorType`注解接受`GenerationTime`枚举值和自定义`ValueGenerator`类类型。
+
+考虑以下实体：
+
+###### 例68.`@GeneratorType`映射示例
+
 
 
 
