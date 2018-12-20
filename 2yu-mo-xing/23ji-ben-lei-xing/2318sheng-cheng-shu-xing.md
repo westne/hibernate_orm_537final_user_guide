@@ -292,5 +292,25 @@ WHERE
 -- binding parameter [5] as [BIGINT]  - [1]
 ```
 
+##### `@CreationTimestamp`注解 {#mapping-generated-CreationTimestamp}
+
+`@CreationTimestamp`注解指示Hibernate在持久化实体时使用JVM的当前时间戳值设置带注释的实体属性。
+
+支持的属性类型是：
+
+* `java.util.Date`
+
+* `java.util.Calendar`
+
+* `java.sql.Date`
+
+* `java.sql.Time`
+
+* `java.sql.Timestamp`
+
+###### 例71.`@CreationTimestamp`映射示例
+
+
+
 
 
