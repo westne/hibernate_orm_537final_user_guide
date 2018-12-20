@@ -8,7 +8,7 @@ Hibernate使得开发人员创建自己的基本类型映射类型相对容易�
 
 作为说明不同方法的一种手段，让我们考虑一个用例，其中需要支持`java.util.BitSet`映射作为`VARCHAR`存储。
 
-#### 实现BasicType
+##### 实现BasicType
 
 第一种方法是直接实现BasicType接口。
 
@@ -237,7 +237,7 @@ TRACE BasicExtractor:61 - extracted value ([bitSet2_0_0_] : [VARCHAR]) - [{0, 65
 
 正如你所见，`BitSetType`类负责Java到SQL和SQL到Java的类型转换。
 
-#### 实现一个`UserType`
+##### 实现一个`UserType`
 
 第二个方法是实现`UserType`接口。
 
