@@ -310,7 +310,21 @@ WHERE
 
 ###### 例71.`@CreationTimestamp`映射示例
 
+```java
+@Entity(name = "Event")
+public static class Event {
 
+	@Id
+	@GeneratedValue
+	private Long id;
+
+	@Column(name = "`timestamp`")
+	@CreationTimestamp
+	private Date timestamp;
+
+	//Constructors, getters, and setters are omitted for brevity
+}
+```
 
 
 
