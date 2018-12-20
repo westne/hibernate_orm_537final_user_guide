@@ -23,7 +23,26 @@ public class PeriodStringConverter
 }
 ```
 
+要使用这个定制的转换器，@Convert注解必须修饰实体属性。
 
+###### 例59.使用自定义的`java.time.Period`的`AttributeConverter`映射实体
+
+```java
+@Entity(name = "Event")
+public static class Event {
+
+    @Id
+    @GeneratedValue
+    private Long id;
+
+    @Convert(converter = PeriodStringConverter.class)
+    @Column(columnDefinition = "")
+    private Period span;
+
+    //Getters and setters are omitted for brevity
+
+}
+```
 
 
 
