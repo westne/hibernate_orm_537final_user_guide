@@ -119,11 +119,24 @@ VALUES (true, 250.0, 1, 0.0105, 'DEBIT', 3)
 
 ```java
 doInJPA( this::entityManagerFactory, entityManager -> {
-	List<Account> accounts = entityManager.createQuery(
-		"select a from Account a", Account.class)
-	.getResultList();
-	assertEquals( 2, accounts.size());
+    List<Account> accounts = entityManager.createQuery(
+        "select a from Account a", Account.class)
+    .getResultList();
+    assertEquals( 2, accounts.size());
 } );
+```
+
+```java
+SELECT
+    a.id as id1_0_,
+    a.active as active2_0_,
+    a.amount as amount3_0_,
+    a.client_id as client_i6_0_,
+    a.rate as rate4_0_,
+    a.account_type as account_5_0_
+FROM
+    Account a
+WHERE ( a.active = true )
 ```
 
 
