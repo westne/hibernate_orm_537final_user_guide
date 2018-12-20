@@ -59,5 +59,11 @@ VALUES ( 'P1Y2M3D', 1 )
 
 如果Java类型是Hibernate不知道的，您将遇到以下消息：
 
-HHH000481:遭遇到某种Java类型，对它我们无法找到JavaTypeDescriptor，它似乎没有实现等值和/或哈希代码。当执行涉及Java类型的相等/脏检查时，这会导致显著的性能问题。考虑注册一个自定义的JavaTypeDescriptor或者至少实现equals/hashCode。
+-- HHH000481:遭遇到某种Java类型，对它我们无法找到JavaTypeDescriptor，它似乎没有实现等值和/或哈希代码。当执行涉及Java类型的相等/脏检查时，这会导致显著的性能问题。考虑注册一个自定义的JavaTypeDescriptor或者至少实现equals/hashCode。
+
+Java类型是否为“已知”意味着它在JavaTypeDescriptorRegistry中有一个条目。虽然默认情况下，Hibernate将许多JDK类型加载到JavaTypeDescriptorRegistry，但是应用程序也可以通过添加新的JavaTypeDescriptor条目来扩展JavaTypeDescriptorRegistry。
+
+这样，Hibernate也将知道如何在JDBC级别处理特定的Java对象类型。
+
+
 
