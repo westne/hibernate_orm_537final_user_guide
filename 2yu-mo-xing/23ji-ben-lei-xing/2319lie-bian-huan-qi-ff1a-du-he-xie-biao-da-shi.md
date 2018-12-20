@@ -72,15 +72,15 @@ Hibernate在查询中引用属性时自动应用自定义表达式。此功能�
 
 ```java
 doInJPA( this::entityManagerFactory, entityManager -> {
-	Savings savings = new Savings( );
-	savings.setId( 1L );
-	savings.setWallet( new MonetaryAmount( BigDecimal.TEN, Currency.getInstance( Locale.US ) ) );
-	entityManager.persist( savings );
+    Savings savings = new Savings( );
+    savings.setId( 1L );
+    savings.setWallet( new MonetaryAmount( BigDecimal.TEN, Currency.getInstance( Locale.US ) ) );
+    entityManager.persist( savings );
 } );
 
 doInJPA( this::entityManagerFactory, entityManager -> {
-	Savings savings = entityManager.find( Savings.class, 1L );
-	assertEquals( 10, savings.getWallet().getAmount().intValue());
+    Savings savings = entityManager.find( Savings.class, 1L );
+    assertEquals( 10, savings.getWallet().getAmount().intValue());
 } );
 ```
 
