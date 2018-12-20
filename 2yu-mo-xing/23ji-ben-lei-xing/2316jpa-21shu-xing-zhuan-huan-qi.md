@@ -94,5 +94,16 @@ public static class Event {
 }
 ```
 
+改变span属性的唯一方法是将其重新分配到不同的值：
+
+```java
+Event event = entityManager.createQuery( "from Event", Event.class ).getSingleResult();
+event.setSpan(Period
+    .ofYears( 3 )
+    .plusMonths( 2 )
+    .plusDays( 1 )
+);
+```
+
 
 
