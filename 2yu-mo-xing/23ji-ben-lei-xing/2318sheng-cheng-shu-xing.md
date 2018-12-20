@@ -163,5 +163,9 @@ WHERE
 -- extracted value ([fullName3_0_] : [VARCHAR]) - [John Flávio André Frederico Rúben Artur Doe Jr]
 ```
 
+#### `@GeneratorType`注解
+
+
+
 
 
