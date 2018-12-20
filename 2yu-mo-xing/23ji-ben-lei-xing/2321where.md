@@ -53,5 +53,49 @@ public static class Account {
 }
 ```
 
+如果数据库包含以下实体：
+
+###### 例84.持久化和获取使用`@Where`映射的实体
+
+```java
+doInJPA( this::entityManagerFactory, entityManager -> {
+
+	Client client = new Client();
+	client.setId( 1L );
+	client.setName( "John Doe" );
+	entityManager.persist( client );
+
+	Account account1 = new Account( );
+	account1.setId( 1L );
+	account1.setType( AccountType.CREDIT );
+	account1.setAmount( 5000d );
+	account1.setRate( 1.25 / 100 );
+	account1.setActive( true );
+	account1.setClient( client );
+	client.getCreditAccounts().add( account1 );
+	entityManager.persist( account1 );
+
+	Account account2 = new Account( );
+	account2.setId( 2L );
+	account2.setType( AccountType.DEBIT );
+	account2.setAmount( 0d );
+	account2.setRate( 1.05 / 100 );
+	account2.setActive( false );
+	account2.setClient( client );
+	client.getDebitAccounts().add( account2 );
+	entityManager.persist( account2 );
+
+	Account account3 = new Account( );
+	account3.setType( AccountType.DEBIT );
+	account3.setId( 3L );
+	account3.setAmount( 250d );
+	account3.setRate( 1.05 / 100 );
+	account3.setActive( true );
+	account3.setClient( client );
+	client.getDebitAccounts().add( account3 );
+	entityManager.persist( account3 );
+} );
+```
+
 
 
