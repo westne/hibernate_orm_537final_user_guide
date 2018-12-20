@@ -29,16 +29,16 @@ public static class Account {
 
 ```java
 doInJPA( this::entityManagerFactory, entityManager -> {
-	Account account = new Account( );
-	account.setId( 1L );
-	account.setCredit( 5000d );
-	account.setRate( 1.25 / 100 );
-	entityManager.persist( account );
+    Account account = new Account( );
+    account.setId( 1L );
+    account.setCredit( 5000d );
+    account.setRate( 1.25 / 100 );
+    entityManager.persist( account );
 } );
 
 doInJPA( this::entityManagerFactory, entityManager -> {
-	Account account = entityManager.find( Account.class, 1L );
-	assertEquals( Double.valueOf( 62.5d ), account.getInterest());
+    Account account = entityManager.find( Account.class, 1L );
+    assertEquals( Double.valueOf( 62.5d ), account.getInterest());
 } );
 ```
 
@@ -57,5 +57,5 @@ WHERE
     a.id = 1
 ```
 
-
+> SQL片段可以任意复杂，甚至可以包括子选择。
 
