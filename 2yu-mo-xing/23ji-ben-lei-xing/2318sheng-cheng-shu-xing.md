@@ -404,5 +404,31 @@ VALUES (?, ?, ?, ?)
 -- binding parameter [4] as [BIGINT]    - [1]
 ```
 
+在更新Bid实体时，Hibernate将使用当前JVM时间戳值修改`update_on`列：
+
+###### 例75.`@UpdateTimestamp`更新示例
+
+```java
+Bid bid = entityManager.find( Bid.class, 1L );
+
+bid.setUpdatedBy( "John Doe Jr." );
+bid.setCents( 160 * 100L );
+entityManager.persist( bid );
+```
+
+```java
+UPDATE Bid SET
+    cents = ?,
+    updated_by = ?,
+    updated_on = ?
+where
+    id = ?
+
+-- binding parameter [1] as [BIGINT]    - [16000]
+-- binding parameter [2] as [VARCHAR]   - [John Doe Jr.]
+-- binding parameter [3] as [TIMESTAMP] - [Tue Apr 18 17:49:24 EEST 2017]
+-- binding parameter [4] as [BIGINT]    - [1]
+```
+
 
 
