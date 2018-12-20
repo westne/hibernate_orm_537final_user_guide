@@ -173,7 +173,53 @@ WHERE
 
 ###### 例68.`@GeneratorType`映射示例
 
+```java
+public static class CurrentUser {
 
+	public static final CurrentUser INSTANCE = new CurrentUser();
+
+	private static final ThreadLocal<String> storage = new ThreadLocal<>();
+
+	public void logIn(String user) {
+		storage.set( user );
+	}
+
+	public void logOut() {
+		storage.remove();
+	}
+
+	public String get() {
+		return storage.get();
+	}
+}
+
+public static class LoggedUserGenerator implements ValueGenerator<String> {
+
+	@Override
+	public String generateValue(
+			Session session, Object owner) {
+		return CurrentUser.INSTANCE.get();
+	}
+}
+
+@Entity(name = "Person")
+public static class Person {
+
+	@Id
+	private Long id;
+
+	private String firstName;
+
+	private String lastName;
+
+	@GeneratorType( type = LoggedUserGenerator.class, when = GenerationTime.INSERT)
+	private String createdBy;
+
+	@GeneratorType( type = LoggedUserGenerator.class, when = GenerationTime.ALWAYS)
+	private String updatedBy;
+
+}
+```
 
 
 
