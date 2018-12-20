@@ -117,9 +117,9 @@ WHERE
 -- extracted value ([fullName3_0_] : [VARCHAR]) - [John Flávio André Frederico Rúben Artur Doe]
 ```
 
-更新Person实体时也是如此。Hibernate将在修改实体之后从数据库中获取计算的fullName列。
+更新`Person`实体时也是如此。Hibernate将在修改实体之后从数据库中获取计算的`fullName`列。
 
-###### 例67.@Generated更新示例
+###### 例67.`@Generated`更新示例
 
 ```java
 Person person = entityManager.find( Person.class, 1L );
