@@ -8,19 +8,53 @@
 @Entity(name = "Account")
 public static class Account {
 
-	@Id
-	private Long id;
+    @Id
+    private Long id;
 
-	private Double credit;
+    private Double credit;
 
-	private Double rate;
+    private Double rate;
 
-	@Formula(value = "credit * rate")
-	private Double interest;
+    @Formula(value = "credit * rate")
+    private Double interest;
 
-	//Getters and setters omitted for brevity
+    //Getters and setters omitted for brevity
 
 }
+```
+
+在加载`Account`实体时，Hibernate将使用配置的`@Formula`：
+
+###### 例82.持久化具有`@Formula`映射的实体
+
+```java
+doInJPA( this::entityManagerFactory, entityManager -> {
+	Account account = new Account( );
+	account.setId( 1L );
+	account.setCredit( 5000d );
+	account.setRate( 1.25 / 100 );
+	entityManager.persist( account );
+} );
+
+doInJPA( this::entityManagerFactory, entityManager -> {
+	Account account = entityManager.find( Account.class, 1L );
+	assertEquals( Double.valueOf( 62.5d ), account.getInterest());
+} );
+```
+
+```java
+INSERT INTO Account (credit, rate, id)
+VALUES (5000.0, 0.0125, 1)
+
+SELECT
+    a.id as id1_0_0_,
+    a.credit as credit2_0_0_,
+    a.rate as rate3_0_0_,
+    a.credit * a.rate as formula0_0_
+FROM
+    Account a
+WHERE
+    a.id = 1
 ```
 
 
