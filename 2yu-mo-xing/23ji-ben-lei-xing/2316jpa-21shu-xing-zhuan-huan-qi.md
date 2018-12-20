@@ -77,3 +77,22 @@ Java类型是否为“已知”意味着它在JavaTypeDescriptorRegistry中有�
 
 考虑到我们有与[JPA 2.1AttributeConverters](http://docs.jboss.org/hibernate/orm/current/userguide/html_single/Hibernate_User_Guide.html#basic-jpa-convert)部分中所示的相同的Period实体属性：
 
+```java
+@Entity(name = "Event")
+public static class Event {
+
+    @Id
+    @GeneratedValue
+    private Long id;
+
+    @Convert(converter = PeriodStringConverter.class)
+    @Column(columnDefinition = "")
+    private Period span;
+
+    //Getters and setters are omitted for brevity
+
+}
+```
+
+
+
