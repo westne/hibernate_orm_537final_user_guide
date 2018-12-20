@@ -105,5 +105,46 @@ event.setSpan(Period
 );
 ```
 
+#### 可变类型
+
+另一方面，考虑以下示例，其中Money类型是可变的。
+
+```java
+public static class Money {
+
+	private long cents;
+
+	//Getters and setters are omitted for brevity
+}
+
+@Entity(name = "Account")
+public static class Account {
+
+	@Id
+	private Long id;
+
+	private String owner;
+
+	@Convert(converter = MoneyConverter.class)
+	private Money balance;
+
+	//Getters and setters are omitted for brevity
+}
+
+public static class MoneyConverter
+		implements AttributeConverter<Money, Long> {
+
+	@Override
+	public Long convertToDatabaseColumn(Money attribute) {
+		return attribute == null ? null : attribute.getCents();
+	}
+
+	@Override
+	public Money convertToEntityAttribute(Long dbData) {
+		return dbData == null ? null : new Money( dbData );
+	}
+}
+```
+
 
 
