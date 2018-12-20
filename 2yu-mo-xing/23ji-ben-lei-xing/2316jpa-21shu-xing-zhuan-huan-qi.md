@@ -65,5 +65,9 @@ Java类型是否为“已知”意味着它在JavaTypeDescriptorRegistry中有�
 
 这样，Hibernate也将知道如何在JDBC级别处理特定的Java对象类型。
 
+#### JPA 2.1`AttributeConverter`易变性计划
 
+一个被JPA`AttributeConverter `转变的基本类型是不可变的，如果底层的Java类型不可变，反之如果关联的属性类型可变则也可变。
+
+因此，关联的实体属性类型的`JavaTypeDescriptor#getMutabilityPlan`提供了可变性。
 
