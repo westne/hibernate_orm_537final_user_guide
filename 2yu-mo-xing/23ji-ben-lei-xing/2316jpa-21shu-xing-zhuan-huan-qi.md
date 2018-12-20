@@ -44,5 +44,14 @@ public static class Event {
 }
 ```
 
+当持久化这样的实体时，Hibernate将根据`AttributeConverter`逻辑进行类型转换：
+
+###### 例60.使用自定义`AttributeConverter`实现实体的持久化
+
+```java
+INSERT INTO Event ( span, id )
+VALUES ( 'P1Y2M3D', 1 )
+```
+
 
 
