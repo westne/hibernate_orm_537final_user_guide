@@ -343,5 +343,45 @@ VALUES (?, ?)
 -- binding parameter [2] as [BIGINT]    - [1]
 ```
 
+##### `@UpdateTimestamp`注解 {#mapping-generated-UpdateTimestamp}
+
+`@UpdateTimestamp`注解指示Hibernate在持久化实体时使用JVM的当前时间戳值设置带注释的实体属性。
+
+支持的属性类型是：
+
+* `java.util.Date`
+
+* `java.util.Calendar`
+
+* `java.sql.Date`
+
+* `java.sql.Time`
+
+* `java.sql.Timestamp`
+
+###### 例73.`@UpdateTimestamp`映射示例
+
+```java
+@Entity(name = "Bid")
+public static class Bid {
+
+	@Id
+	@GeneratedValue
+	private Long id;
+
+	@Column(name = "updated_on")
+	@UpdateTimestamp
+	private Date updatedOn;
+
+	@Column(name = "updated_by")
+	private String updatedBy;
+
+	private Long cents;
+
+	//Getters and setters are omitted for brevity
+
+}
+```
+
 
 
