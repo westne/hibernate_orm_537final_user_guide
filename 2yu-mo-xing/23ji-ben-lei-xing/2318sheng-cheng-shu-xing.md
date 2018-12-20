@@ -365,22 +365,43 @@ VALUES (?, ?)
 @Entity(name = "Bid")
 public static class Bid {
 
-	@Id
-	@GeneratedValue
-	private Long id;
+    @Id
+    @GeneratedValue
+    private Long id;
 
-	@Column(name = "updated_on")
-	@UpdateTimestamp
-	private Date updatedOn;
+    @Column(name = "updated_on")
+    @UpdateTimestamp
+    private Date updatedOn;
 
-	@Column(name = "updated_by")
-	private String updatedBy;
+    @Column(name = "updated_by")
+    private String updatedBy;
 
-	private Long cents;
+    private Long cents;
 
-	//Getters and setters are omitted for brevity
+    //Getters and setters are omitted for brevity
 
 }
+```
+
+当持久化Bid实体时，Hibernate将使用当前JVM时间戳值填充底层的`update_on`列：
+
+###### 例74.`@UpdateTimestamp`持久化示例
+
+```java
+Bid bid = new Bid();
+bid.setUpdatedBy( "John Doe" );
+bid.setCents( 150 * 100L );
+entityManager.persist( bid );
+```
+
+```java
+INSERT INTO Bid (cents, updated_by, updated_on, id)
+VALUES (?, ?, ?, ?)
+
+-- binding parameter [1] as [BIGINT]    - [15000]
+-- binding parameter [2] as [VARCHAR]   - [John Doe]
+-- binding parameter [3] as [TIMESTAMP] - [Tue Apr 18 17:21:46 EEST 2017]
+-- binding parameter [4] as [BIGINT]    - [1]
 ```
 
 
