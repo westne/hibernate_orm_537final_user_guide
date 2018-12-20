@@ -18,11 +18,48 @@
 
 #### `@Generated`注解
 
-使用`@Generated`注解，以便在实体被持久化或更新之后，Hibernate可以获取当前已注解的属性。由于这个原因，`@Generated`注解接受`GenerationTime`枚举值。
+使用`@Generated`注解，以便在实体被持久化或更新之后，Hibernate可以获取当前已注解的属性。由于这个原因，`@Generated`注解接受[`GenerationTime`](https://docs.jboss.org/hibernate/orm/5.3/javadocs/org/hibernate/annotations/GenerationTime.html)枚举值。
 
 考虑以下实体：
 
 ###### 例65.`@Generated`映射示例
+
+```java
+@Entity(name = "Person")
+public static class Person {
+
+	@Id
+	private Long id;
+
+	private String firstName;
+
+	private String lastName;
+
+	private String middleName1;
+
+	private String middleName2;
+
+	private String middleName3;
+
+	private String middleName4;
+
+	private String middleName5;
+
+	@Generated( value = GenerationTime.ALWAYS )
+	@Column(columnDefinition =
+		"AS CONCAT(" +
+		"	COALESCE(firstName, ''), " +
+		"	COALESCE(' ' + middleName1, ''), " +
+		"	COALESCE(' ' + middleName2, ''), " +
+		"	COALESCE(' ' + middleName3, ''), " +
+		"	COALESCE(' ' + middleName4, ''), " +
+		"	COALESCE(' ' + middleName5, ''), " +
+		"	COALESCE(' ' + lastName, '') " +
+		")")
+	private String fullName;
+
+}
+```
 
 
 
