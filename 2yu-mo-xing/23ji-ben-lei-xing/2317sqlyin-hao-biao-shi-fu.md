@@ -8,13 +8,33 @@
 @Entity(name = "Product")
 public static class Product {
 
+    @Id
+    private Long id;
+
+    @Column(name = "`name`")
+    private String name;
+
+    @Column(name = "`number`")
+    private String number;
+
+    //Getters and setters are omitted for brevity
+
+}
+```
+
+###### 例62.JPA引用
+
+```java
+@Entity(name = "Product")
+public static class Product {
+
 	@Id
 	private Long id;
 
-	@Column(name = "`name`")
+	@Column(name = "\"name\"")
 	private String name;
 
-	@Column(name = "`number`")
+	@Column(name = "\"number\"")
 	private String number;
 
 	//Getters and setters are omitted for brevity
