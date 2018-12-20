@@ -82,7 +82,7 @@ entityManager.flush();
 assertEquals("John Flávio André Frederico Rúben Artur Doe", person.getFullName());
 ```
 
-```
+```java
 INSERT INTO Person
 (
     firstName,
