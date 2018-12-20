@@ -314,17 +314,23 @@ WHERE
 @Entity(name = "Event")
 public static class Event {
 
-	@Id
-	@GeneratedValue
-	private Long id;
+    @Id
+    @GeneratedValue
+    private Long id;
 
-	@Column(name = "`timestamp`")
-	@CreationTimestamp
-	private Date timestamp;
+    @Column(name = "`timestamp`")
+    @CreationTimestamp
+    private Date timestamp;
 
-	//Constructors, getters, and setters are omitted for brevity
+    //Constructors, getters, and setters are omitted for brevity
 }
 ```
+
+当持久化Event实体时，Hibernate将使用当前JVM时间戳值填充底层`timestamp`列：
+
+###### 例72.`@CreationTimestamp`持久化示例
+
+
 
 
 
