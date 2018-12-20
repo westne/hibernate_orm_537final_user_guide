@@ -113,5 +113,18 @@ INSERT INTO Account (active, amount, client_id, rate, account_type, id)
 VALUES (true, 250.0, 1, 0.0105, 'DEBIT', 3)
 ```
 
+在执行`Account`实体查询时，Hibernate将过滤掉所有不活动的记录。
+
+###### 例85.查询使用`@Where`映射的实体
+
+```java
+doInJPA( this::entityManagerFactory, entityManager -> {
+	List<Account> accounts = entityManager.createQuery(
+		"select a from Account a", Account.class)
+	.getResultList();
+	assertEquals( 2, accounts.size());
+} );
+```
+
 
 
