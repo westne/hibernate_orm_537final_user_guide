@@ -59,3 +59,5 @@ VALUES ( 'P1Y2M3D', 1 )
 
 如果Java类型是Hibernate不知道的，您将遇到以下消息：
 
+HHH000481:遭遇到某种Java类型，对它我们无法找到JavaTypeDescriptor，它似乎没有实现等值和/或哈希代码。当执行涉及Java类型的相等/脏检查时，这会导致显著的性能问题。考虑注册一个定制的JavaTypeDescriptor或者至少实现equals/hashCode。
+
