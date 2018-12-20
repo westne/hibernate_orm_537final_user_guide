@@ -4,7 +4,24 @@
 
 ###### 例81.`@Formula`映射使用
 
+```java
+@Entity(name = "Account")
+public static class Account {
 
+	@Id
+	private Long id;
+
+	private Double credit;
+
+	private Double rate;
+
+	@Formula(value = "credit * rate")
+	private Double interest;
+
+	//Getters and setters omitted for brevity
+
+}
+```
 
 
 
