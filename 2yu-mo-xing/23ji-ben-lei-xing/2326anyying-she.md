@@ -180,7 +180,7 @@ assertEquals("name", propertyHolder.getProperty().getName());
 assertEquals("John Doe", propertyHolder.getProperty().getValue());
 ```
 
-```java
+```ruby
 SELECT ph.id AS id1_1_0_,
        ph.property_type AS property2_1_0_,
        ph.property_id AS property3_1_0_
