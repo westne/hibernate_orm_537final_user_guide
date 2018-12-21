@@ -304,7 +304,7 @@ for(Property property : propertyRepository.getProperties()) {
 }
 ```
 
-```java
+```ruby
 SELECT pr.id AS id1_1_0_
 FROM   property_repository pr
 WHERE  pr.id = 1
