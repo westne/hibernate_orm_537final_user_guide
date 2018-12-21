@@ -1,2 +1,2 @@
-hibernate 5 中文文档
+hibernate orm 5 中文文档
 
