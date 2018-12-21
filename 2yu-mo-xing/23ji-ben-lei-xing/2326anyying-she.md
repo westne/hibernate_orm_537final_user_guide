@@ -195,5 +195,52 @@ FROM   string_property sp
 WHERE  sp.id = 1
 ```
 
+##### `@ManyToAny`映射 {#mapping-column-many-to-any}
+
+当存在多个目标实体时，`@Any`映射对于模拟`@ManyToOne`关联很有用。为了模拟`@OneToMany`关联，必须使用`@ManyToAny`注解。
+
+在下面的示例中，`PropertyRepository`实体具有`Property`实体的集合。
+
+`repository_properties`链接表保存`PropertyRepository`和`Property`实体之间的关联。
+
+###### 例108.`@ManyToAny`映射使用
+
+```java
+@Entity
+@Table( name = "property_repository" )
+public class PropertyRepository {
+
+    @Id
+    private Long id;
+
+    @ManyToAny(
+        metaDef = "PropertyMetaDef",
+        metaColumn = @Column( name = "property_type" )
+    )
+    @Cascade( { org.hibernate.annotations.CascadeType.ALL })
+    @JoinTable(name = "repository_properties",
+        joinColumns = @JoinColumn(name = "repository_id"),
+        inverseJoinColumns = @JoinColumn(name = "property_id")
+    )
+    private List<Property<?>> properties = new ArrayList<>(  );
+
+    //Getters and setters are omitted for brevity
+
+}
+```
+
+```java
+CREATE TABLE property_repository (
+    id BIGINT NOT NULL,
+    PRIMARY KEY ( id )
+)
+
+CREATE TABLE repository_properties (
+    repository_id BIGINT NOT NULL,
+    property_type VARCHAR(255),
+    property_id BIGINT NOT NULL
+)
+```
+
 
 
