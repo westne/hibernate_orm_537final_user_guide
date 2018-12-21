@@ -57,11 +57,11 @@ doInJPA( this::entityManagerFactory, entityManager -> {
 ```java
 doInJPA( this::entityManagerFactory, entityManager -> {
 
-	City cluj = entityManager.find( City.class, 1L );
+    City cluj = entityManager.find( City.class, 1L );
 
-	assertSame( cluj, cluj.getCoordinates().getCity() );
+    assertSame( cluj, cluj.getCoordinates().getCity() );
 } );
 ```
 
-
+因此，@Parent注解用于定义可嵌入类型与所属实体之间的关联。
 
