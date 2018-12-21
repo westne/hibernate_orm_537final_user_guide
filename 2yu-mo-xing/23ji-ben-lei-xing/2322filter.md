@@ -40,5 +40,9 @@ public static class Account {
 }
 ```
 
+注意，`active`属性被映射到`active_status`列。
+
+此映射是为了显示`@Filter`条件使用SQL条件而不是JPQL筛选谓词。
+
 
 
