@@ -44,7 +44,7 @@ public static class Account {
 >
 > 此映射是为了显示`@Filter`条件使用SQL条件而不是JPQL筛选谓词。
 
-如前所述，我们还可以对集合应用`@Filter`注释，如Client实体所示：
+如前所述，我们还可以对集合应用`@Filter`注释，如`Client`实体所示：
 
 ###### 例91.`@Filter`映射集合级使用
 
@@ -127,6 +127,18 @@ VALUES (false, 0.0, 1, 0.0105, 'DEBIT', 2)
 
 INSERT INTO Account (active_status, amount, client_id, rate, account_type, id)
 VALUES (true, 250.0, 1, 0.0105, 'DEBIT', 3)
+```
+
+默认情况下，在不显式启用筛选器的情况下，Hibernate将获取所有`Account`实体。
+
+###### 例93.在不激活`@Filter`的情况下查询映射的实体
+
+```java
+List<Account> accounts = entityManager.createQuery(
+    "select a from Account a", Account.class)
+.getResultList();
+
+assertEquals( 3, accounts.size());
 ```
 
 
