@@ -44,7 +44,7 @@ public static class Account {
 >
 > 此映射是为了显示`@Filter`条件使用SQL条件而不是JPQL筛选谓词。
 
-如前所述，我们还可以对集合应用`@Filter`注释，如客户端实体所示：
+如前所述，我们还可以对集合应用`@Filter`注释，如Client实体所示：
 
 ###### 例91.`@Filter`映射集合级使用
 
@@ -74,6 +74,45 @@ public static class Client {
         this.accounts.add( account );
     }
 }
+```
+
+如果我们使用三个相关联的Account实体持久化一个Client，Hibernate将执行以下SQL语句：
+
+###### 例92.使用`@Filter`映射持久化和获取实体
+
+```java
+Client client = new Client()
+.setId( 1L )
+.setName( "John Doe" );
+
+client.addAccount(
+    new Account()
+    .setId( 1L )
+    .setType( AccountType.CREDIT )
+    .setAmount( 5000d )
+    .setRate( 1.25 / 100 )
+    .setActive( true )
+);
+
+client.addAccount(
+    new Account()
+    .setId( 2L )
+    .setType( AccountType.DEBIT )
+    .setAmount( 0d )
+    .setRate( 1.05 / 100 )
+    .setActive( false )
+);
+
+client.addAccount(
+    new Account()
+    .setType( AccountType.DEBIT )
+    .setId( 3L )
+    .setAmount( 250d )
+    .setRate( 1.05 / 100 )
+    .setActive( true )
+);
+
+entityManager.persist( client );
 ```
 
 
