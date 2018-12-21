@@ -97,17 +97,26 @@ reader2.setName( "John Doe Jr." );
 entityManager.persist( reader2 );
 
 statement.executeUpdate(
-	"INSERT INTO Book_Reader " +
-	"	(book_id, reader_id) " +
-	"VALUES " +
-	"	(1, 1) "
+    "INSERT INTO Book_Reader " +
+    "    (book_id, reader_id) " +
+    "VALUES " +
+    "    (1, 1) "
 );
 statement.executeUpdate(
-	"INSERT INTO Book_Reader " +
-	"	(book_id, reader_id, created_on) " +
-	"VALUES " +
-	"	(1, 2, DATEADD( 'DAY', -10, CURRENT_TIMESTAMP() )) "
+    "INSERT INTO Book_Reader " +
+    "    (book_id, reader_id, created_on) " +
+    "VALUES " +
+    "    (1, 2, DATEADD( 'DAY', -10, CURRENT_TIMESTAMP() )) "
 );
+```
+
+当获取`currentWeekReaders`集合时，Hibernate将找到一个条目：
+
+###### 例89.`@WhereJoinTable`获取示例
+
+```java
+Book book = entityManager.find( Book.class, 1L );
+assertEquals( 1, book.getCurrentWeekReaders().size() );
 ```
 
 
