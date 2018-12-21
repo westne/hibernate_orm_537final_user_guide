@@ -272,7 +272,7 @@ propertyRepository.getProperties().add( nameProperty );
 session.persist( propertyRepository );
 ```
 
-```java
+```ruby
 INSERT INTO integer_property
        ( "name", "value", id )
 VALUES ( 'age', 23, 1 )
