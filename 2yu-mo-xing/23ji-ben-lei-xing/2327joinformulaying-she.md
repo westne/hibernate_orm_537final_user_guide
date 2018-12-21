@@ -7,20 +7,20 @@
 @Table(name = "users")
 public static class User {
 
-	@Id
-	private Long id;
+    @Id
+    private Long id;
 
-	private String firstName;
+    private String firstName;
 
-	private String lastName;
+    private String lastName;
 
-	private String phoneNumber;
+    private String phoneNumber;
 
-	@ManyToOne
-	@JoinFormula( "REGEXP_REPLACE(phoneNumber, '\\+(\\d+)-.*', '\\1')::int" )
-	private Country country;
+    @ManyToOne
+    @JoinFormula( "REGEXP_REPLACE(phoneNumber, '\\+(\\d+)-.*', '\\1')::int" )
+    private Country country;
 
-	//Getters and setters omitted for brevity
+    //Getters and setters omitted for brevity
 
 }
 
@@ -28,14 +28,30 @@ public static class User {
 @Table(name = "countries")
 public static class Country {
 
-	@Id
-	private Integer id;
+    @Id
+    private Integer id;
 
-	private String name;
+    private String name;
 
-	//Getters and setters, equals and hashCode methods omitted for brevity
+    //Getters and setters, equals and hashCode methods omitted for brevity
 
 }
+```
+
+```java
+CREATE TABLE countries (
+    id int4 NOT NULL,
+    name VARCHAR(255),
+    PRIMARY KEY ( id )
+)
+
+CREATE TABLE users (
+    id int8 NOT NULL,
+    firstName VARCHAR(255),
+    lastName VARCHAR(255),
+    phoneNumber VARCHAR(255),
+    PRIMARY KEY ( id )
+)
 ```
 
 
