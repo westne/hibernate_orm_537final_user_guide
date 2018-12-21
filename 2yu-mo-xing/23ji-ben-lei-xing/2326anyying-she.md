@@ -169,5 +169,16 @@ INSERT INTO property_holder
 VALUES ( 'S', 1, 1 )
 ```
 
+当获取`PropertyHolder`实体并导航其属性关联时，Hibernate将获取关联的`StringProperty`实体，如下所示：
+
+###### 例107.`@Any`映射查询示例
+
+```java
+PropertyHolder propertyHolder = session.get( PropertyHolder.class, 1L );
+
+assertEquals("name", propertyHolder.getProperty().getName());
+assertEquals("John Doe", propertyHolder.getProperty().getValue());
+```
+
 
 
