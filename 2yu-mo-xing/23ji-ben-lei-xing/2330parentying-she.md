@@ -63,5 +63,5 @@ doInJPA( this::entityManagerFactory, entityManager -> {
 } );
 ```
 
-因此，@Parent注解用于定义可嵌入类型与所属实体之间的关联。
+因此，`@Parent`注解用于定义可嵌入类型与所属实体之间的关联。
 
