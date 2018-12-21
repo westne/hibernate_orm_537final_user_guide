@@ -121,5 +121,35 @@ INSERT INTO Client_Account (Client_id, order_id, accounts_id)
 VALUES (1, 2, 3)
 ```
 
+只有在当前运行的Hibernate`Session`上启用关联筛选器时，才能筛选集合。
+
+###### 例99.在不启用筛选器的情况下，遍历映射为`@FilterJoinTable`的集合
+
+```java
+Client client = entityManager.find( Client.class, 1L );
+
+assertEquals( 3, client.getAccounts().size());
+```
+
+```java
+SELECT
+    ca.Client_id as Client_i1_2_0_,
+    ca.accounts_id as accounts2_2_0_,
+    ca.order_id as order_id3_0_,
+    a.id as id1_0_1_,
+    a.amount as amount3_0_1_,
+    a.rate as rate4_0_1_,
+    a.account_type as account_5_0_1_
+FROM
+    Client_Account ca
+INNER JOIN
+    Account a
+ON  ca.accounts_id=a.id
+WHERE
+    ca.Client_id = ?
+
+-- binding parameter [1] as [BIGINT] - [1]
+```
+
 
 
