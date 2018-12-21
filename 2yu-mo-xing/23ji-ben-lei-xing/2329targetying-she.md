@@ -105,5 +105,5 @@ WHERE
 -- extracted value ([name4_0_0_]     : [VARCHAR]) - [Cluj]
 ```
 
-
+因此，`@Target`注解用于定义父子关联之间的自定义连接关联。
 
