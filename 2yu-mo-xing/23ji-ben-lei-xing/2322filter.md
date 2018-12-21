@@ -221,5 +221,37 @@ WHERE
 >
 > 正如从上面的例子所见，与实体查询相反，过滤器不阻止实体被加载。
 
+就像实体查询一样，也可以过滤集合，但只有在当前运行的Hibernate`Session`上显式启用了过滤器时才能过滤集合。
+
+###### 例95.在不激活`@Filter`的情况下遍历集合
+
+```java
+Client client = entityManager.find( Client.class, 1L );
+
+assertEquals( 3, client.getAccounts().size() );
+```
+
+```java
+SELECT
+    c.id as id1_1_0_,
+    c.name as name2_1_0_
+FROM
+    Client c
+WHERE
+    c.id = 1
+
+SELECT
+    a.id as id1_0_,
+    a.active_status as active2_0_,
+    a.amount as amount3_0_,
+    a.client_id as client_i6_0_,
+    a.rate as rate4_0_,
+    a.account_type as account_5_0_
+FROM
+    Account a
+WHERE
+    a.client_id = 1
+```
+
 
 
