@@ -157,7 +157,7 @@ FROM
 
 如果启用了过滤器并且提供了过滤器参数值，那么Hibernate将向关联的Account实体应用过滤标准。
 
-###### 例94.使用@Filter映射的查询实体
+###### 例94.查询使用@Filter映射的实体
 
 ```java
 entityManager
