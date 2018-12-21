@@ -120,7 +120,61 @@ doInJPA( this::entityManagerFactory, entityManager -> {
 
 ###### 例116.`@JoinColumnOrFormula`获取示例
 
+```java
+doInJPA( this::entityManagerFactory, entityManager -> {
+	log.info( "Fetch User entities" );
 
+	User john = entityManager.find( User.class, 1L );
+	assertEquals( US, john.getCountry());
 
+	User vlad = entityManager.find( User.class, 2L );
+	assertEquals( Romania, vlad.getCountry());
+} );
+```
 
+```ruby
+SELECT
+    u.id as id1_1_0_,
+    u.language as language3_1_0_,
+    u.firstName as firstNam2_1_0_,
+    u.lastName as lastName4_1_0_,
+    1 as formula1_0_,
+    c.id as id1_0_1_,
+    c.is_default as is_defau2_0_1_,
+    c.name as name3_0_1_,
+    c.primaryLanguage as primaryL4_0_1_
+FROM
+    users u
+LEFT OUTER JOIN
+    countries c
+        ON u.language = c.primaryLanguage
+        AND 1 = c.is_default
+WHERE
+    u.id = ?
+
+-- binding parameter [1] as [BIGINT] - [1]
+
+SELECT
+    u.id as id1_1_0_,
+    u.language as language3_1_0_,
+    u.firstName as firstNam2_1_0_,
+    u.lastName as lastName4_1_0_,
+    1 as formula1_0_,
+    c.id as id1_0_1_,
+    c.is_default as is_defau2_0_1_,
+    c.name as name3_0_1_,
+    c.primaryLanguage as primaryL4_0_1_
+FROM
+    users u
+LEFT OUTER JOIN
+    countries c
+        ON u.language = c.primaryLanguage
+        AND 1 = c.is_default
+WHERE
+    u.id = ?
+
+-- binding parameter [1] as [BIGINT] - [2]
+```
+
+因此，`@JoinColumnOrFormula`注解用于定义父子关联之间的自定义联接关联。
 
