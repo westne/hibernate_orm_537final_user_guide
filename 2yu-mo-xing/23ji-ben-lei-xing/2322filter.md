@@ -76,7 +76,7 @@ public static class Client {
 }
 ```
 
-如果我们使用三个相关联的Account实体持久化一个Client，Hibernate将执行以下SQL语句：
+如果我们使用三个相关联的`Account`实体持久化一个`Client`，Hibernate将执行以下SQL语句：
 
 ###### 例92.使用`@Filter`映射持久化和获取实体
 
