@@ -80,11 +80,29 @@ doInJPA( this::entityManagerFactory, entityManager -> {
 ```java
 doInJPA( this::entityManagerFactory, entityManager -> {
 
-	City cluj = entityManager.find( City.class, 1L );
+    City cluj = entityManager.find( City.class, 1L );
 
-	assertEquals( 46.77120, cluj.getCoordinates().x(), 0.00001 );
-	assertEquals( 23.62360, cluj.getCoordinates().y(), 0.00001 );
+    assertEquals( 46.77120, cluj.getCoordinates().x(), 0.00001 );
+    assertEquals( 23.62360, cluj.getCoordinates().y(), 0.00001 );
 } );
+```
+
+```ruby
+SELECT
+    c.id as id1_0_0_,
+    c.latitude as latitude2_0_0_,
+    c.longitude as longitud3_0_0_,
+    c.name as name4_0_0_
+FROM
+    City c
+WHERE
+    c.id = ?
+
+-- binding parameter [1] as [BIGINT] - [1]
+
+-- extracted value ([latitude2_0_0_] : [DOUBLE])  - [46.7712]
+-- extracted value ([longitud3_0_0_] : [DOUBLE])  - [23.6236]
+-- extracted value ([name4_0_0_]     : [VARCHAR]) - [Cluj]
 ```
 
 
