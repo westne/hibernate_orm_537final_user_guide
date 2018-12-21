@@ -6,35 +6,35 @@
 @Entity(name = "Book")
 public static class Book {
 
-	@Id
-	private Long id;
+    @Id
+    private Long id;
 
-	private String title;
+    private String title;
 
-	private String author;
+    private String author;
 
-	@ManyToMany
-	@JoinTable(
-		name = "Book_Reader",
-		joinColumns = @JoinColumn(name = "book_id"),
-		inverseJoinColumns = @JoinColumn(name = "reader_id")
-	)
-	@WhereJoinTable( clause = "created_on > DATEADD( 'DAY', -7, CURRENT_TIMESTAMP() )")
-	private List<Reader> currentWeekReaders = new ArrayList<>( );
+    @ManyToMany
+    @JoinTable(
+        name = "Book_Reader",
+        joinColumns = @JoinColumn(name = "book_id"),
+        inverseJoinColumns = @JoinColumn(name = "reader_id")
+    )
+    @WhereJoinTable( clause = "created_on > DATEADD( 'DAY', -7, CURRENT_TIMESTAMP() )")
+    private List<Reader> currentWeekReaders = new ArrayList<>( );
 
-	//Getters and setters omitted for brevity
+    //Getters and setters omitted for brevity
 
 }
 
 @Entity(name = "Reader")
 public static class Reader {
 
-	@Id
-	private Long id;
+    @Id
+    private Long id;
 
-	private String name;
+    private String name;
 
-	//Getters and setters omitted for brevity
+    //Getters and setters omitted for brevity
 
 }
 ```
@@ -73,5 +73,9 @@ alter table Book_Reader
     default current_timestamp
 ```
 
+在上面的示例中，当前周`Reader`实体包含在`currentWeekReaders`集合中，该集合使用`@WhereJoinTable`注解根据提供的SQL子句筛选合并的表行。
 
+考虑到以下两个Book\_Reader条目被添加到我们的系统中：
+
+例88.`@WhereJoinTable`测试数据
 
