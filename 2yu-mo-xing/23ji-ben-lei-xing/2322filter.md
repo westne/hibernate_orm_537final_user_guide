@@ -186,5 +186,40 @@ WHERE
     a.active_status = true
 ```
 
+> 过滤器应用到实体查询，但不直接获取。
+>
+> 因此，在下面的例子中，当从持久化上下文中获取一个实体时过滤器不纳入考虑。
+>
+> ###### 获取带有`@Filter`映射的实体
+>
+> ```java
+> entityManager
+>     .unwrap( Session.class )
+>     .enableFilter( "activeAccount" )
+>     .setParameter( "active", true);
+>
+> Account account = entityManager.find( Account.class, 2L );
+>
+> assertFalse( account.isActive() );
+> ```
+>
+> ```java
+> SELECT
+>     a.id as id1_0_0_,
+>     a.active_status as active2_0_0_,
+>     a.amount as amount3_0_0_,
+>     a.client_id as client_i6_0_0_,
+>     a.rate as rate4_0_0_,
+>     a.account_type as account_5_0_0_,
+>     c.id as id1_1_1_,
+>     c.name as name2_1_1_
+> FROM
+>     Account a
+> WHERE
+>     a.id = 2
+> ```
+>
+> 正如从上面的例子所见，与实体查询相反，过滤器不阻止实体被加载。
+
 
 
