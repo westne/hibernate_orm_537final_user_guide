@@ -7,33 +7,33 @@
 @Table(name = "users")
 public static class User {
 
-	@Id
-	private Long id;
+    @Id
+    private Long id;
 
-	private String firstName;
+    private String firstName;
 
-	private String lastName;
+    private String lastName;
 
-	private String language;
+    private String language;
 
-	@ManyToOne
-	@JoinColumnOrFormula( column =
-		@JoinColumn(
-			name = "language",
-			referencedColumnName = "primaryLanguage",
-			insertable = false,
-			updatable = false
-		)
-	)
-	@JoinColumnOrFormula( formula =
-		@JoinFormula(
-			value = "true",
-			referencedColumnName = "is_default"
-		)
-	)
-	private Country country;
+    @ManyToOne
+    @JoinColumnOrFormula( column =
+        @JoinColumn(
+            name = "language",
+            referencedColumnName = "primaryLanguage",
+            insertable = false,
+            updatable = false
+        )
+    )
+    @JoinColumnOrFormula( formula =
+        @JoinFormula(
+            value = "true",
+            referencedColumnName = "is_default"
+        )
+    )
+    private Country country;
 
-	//Getters and setters omitted for brevity
+    //Getters and setters omitted for brevity
 
 }
 
@@ -41,17 +41,17 @@ public static class User {
 @Table(name = "countries")
 public static class Country implements Serializable {
 
-	@Id
-	private Integer id;
+    @Id
+    private Integer id;
 
-	private String name;
+    private String name;
 
-	private String primaryLanguage;
+    private String primaryLanguage;
 
-	@Column(name = "is_default")
-	private boolean _default;
+    @Column(name = "is_default")
+    private boolean _default;
 
-	//Getters and setters, equals and hashCode methods omitted for brevity
+    //Getters and setters, equals and hashCode methods omitted for brevity
 
 }
 ```
@@ -73,6 +73,12 @@ CREATE TABLE users (
     PRIMARY KEY ( id )
 )
 ```
+
+`User`实体中的`country`关联由`language`属性值和关联的`Country` `is_default`列值映射。
+
+考虑到我们有以下实体：
+
+例115.`@JoinColumnOrFormula`持久化示例
 
 
 
