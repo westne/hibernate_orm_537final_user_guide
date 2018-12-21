@@ -71,7 +71,7 @@ public class StringProperty implements Property<String> {
 }
 ```
 
-`PropertyHolder`可以引用任何此类属性，并且由于每个`Property`都属于一个单独的表，因此需要`@Any`注释。
+`PropertyHolder`可以引用任何此类属性，并且由于每个`Property`都属于一个单独的表，因此需要`@Any`注解。
 
 ###### 例104.`@Any`映射使用
 
@@ -106,7 +106,7 @@ CREATE TABLE property_holder (
 
 如您所见，有两列用于引用`Property`实例：`property_id`和`property_type`。`property_id`用于匹配`string_property`或`integer_property`表的`id`列，而`property_type`用于匹配`string_property`或`integer_property`表。
 
-表解析映射由`metaDef`属性定义，该属性引用`@AnyMetaDef`映射。虽然`@AnyMetaDef`映射可以紧挨`@Any`注释设置，但是重用它是一个很好的实践，因此在类或包级别配置它是有意义的。
+表解析映射由`metaDef`属性定义，该属性引用`@AnyMetaDef`映射。虽然`@AnyMetaDef`映射可以紧挨`@Any`注解设置，但是重用它是一个很好的实践，因此在类或包级别配置它是有意义的。
 
 `package-info.java`包含`@AnyMetaDef`映射：
 
@@ -123,6 +123,36 @@ package org.hibernate.userguide.mapping.basic.any;
 
 import org.hibernate.annotations.AnyMetaDef;
 import org.hibernate.annotations.MetaValue;
+```
+
+> 建议将`@AnyMetaDef`映射作为包元数据放置。
+
+要查看`@Any`注解的实际效果，请考虑下面的示例。
+
+如果我们持久化`IntegerProperty`以及`StringProperty`实体，并将`StringProperty`实体与`PropertyHolder`关联，Hibernate将生成以下SQL查询：
+
+###### 例106.`@Any`映射持久化示例
+
+```java
+IntegerProperty ageProperty = new IntegerProperty();
+ageProperty.setId( 1L );
+ageProperty.setName( "age" );
+ageProperty.setValue( 23 );
+
+session.persist( ageProperty );
+
+StringProperty nameProperty = new StringProperty();
+nameProperty.setId( 1L );
+nameProperty.setName( "name" );
+nameProperty.setValue( "John Doe" );
+
+session.persist( nameProperty );
+
+PropertyHolder namePropertyHolder = new PropertyHolder();
+namePropertyHolder.setId( 1L );
+namePropertyHolder.setProperty( nameProperty );
+
+session.persist( namePropertyHolder );
 ```
 
 
