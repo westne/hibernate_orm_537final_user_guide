@@ -56,7 +56,7 @@ public static class City {
 }
 ```
 
-坐标可嵌入类型被映射为坐标接口。但是，Hibernate需要知道实际的实现类型，在本例中是GPS，因此@Target注解用于提供此信息。
+`coordinates`可嵌入类型被映射为`Coordinates`接口。但是，Hibernate需要知道实际的实现类型，在本例中是GPS，因此`@Target`注解用于提供此信息。
 
 假设我们持久化以下`City`实体：
 
@@ -65,11 +65,25 @@ public static class City {
 ```java
 doInJPA( this::entityManagerFactory, entityManager -> {
 
-	City cluj = new City();
-	cluj.setName( "Cluj" );
-	cluj.setCoordinates( new GPS( 46.77120, 23.62360 ) );
+    City cluj = new City();
+    cluj.setName( "Cluj" );
+    cluj.setCoordinates( new GPS( 46.77120, 23.62360 ) );
 
-	entityManager.persist( cluj );
+    entityManager.persist( cluj );
+} );
+```
+
+获取`City`实体时，`coordinates`属性由`@Target`表达式映射：
+
+###### 例119.`@Target`获取示例
+
+```java
+doInJPA( this::entityManagerFactory, entityManager -> {
+
+	City cluj = entityManager.find( City.class, 1L );
+
+	assertEquals( 46.77120, cluj.getCoordinates().x(), 0.00001 );
+	assertEquals( 23.62360, cluj.getCoordinates().y(), 0.00001 );
 } );
 ```
 
