@@ -147,5 +147,5 @@ WHERE
 -- binding parameter [1] as [BIGINT] - [2]
 ```
 
-
+因此，`@JoinFormula`注释用于定义父子关联之间的自定义联接关联。
 
