@@ -229,7 +229,7 @@ public class PropertyRepository {
 }
 ```
 
-```java
+```ruby
 CREATE TABLE property_repository (
     id BIGINT NOT NULL,
     PRIMARY KEY ( id )
