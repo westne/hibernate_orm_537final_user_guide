@@ -253,5 +253,43 @@ WHERE
     a.client_id = 1
 ```
 
+当激活`@Filter`并获取帐户集合时，Hibernate将向关联的集合条目应用筛选条件。
+
+###### 例96.遍历使用`@Filter`映射的集合
+
+```java
+entityManager
+    .unwrap( Session.class )
+    .enableFilter( "activeAccount" )
+    .setParameter( "active", true);
+
+Client client = entityManager.find( Client.class, 1L );
+
+assertEquals( 2, client.getAccounts().size() );
+```
+
+```java
+SELECT
+    c.id as id1_1_0_,
+    c.name as name2_1_0_
+FROM
+    Client c
+WHERE
+    c.id = 1
+
+SELECT
+    a.id as id1_0_,
+    a.active_status as active2_0_,
+    a.amount as amount3_0_,
+    a.client_id as client_i6_0_,
+    a.rate as rate4_0_,
+    a.account_type as account_5_0_
+FROM
+    Account a
+WHERE
+    accounts0_.active_status = true
+    and a.client_id = 1
+```
+
 
 
