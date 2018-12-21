@@ -38,7 +38,7 @@ public static class Country {
 }
 ```
 
-```java
+```ruby
 CREATE TABLE countries (
     id int4 NOT NULL,
     name VARCHAR(255),
@@ -95,7 +95,17 @@ doInJPA( this::entityManagerFactory, entityManager -> {
 
 ###### 例113.`@JoinFormula`映射使用
 
+```java
+doInJPA( this::entityManagerFactory, entityManager -> {
+	log.info( "Fetch User entities" );
 
+	User john = entityManager.find( User.class, 1L );
+	assertEquals( US, john.getCountry());
+
+	User vlad = entityManager.find( User.class, 2L );
+	assertEquals( Romania, vlad.getCountry());
+} );
+```
 
 
 
