@@ -155,5 +155,22 @@ FROM
     Account a
 ```
 
+如果启用了过滤器并且提供了过滤器参数值，那么Hibernate将向关联的Account实体应用过滤标准。
+
+###### 例94.使用@Filter映射的查询实体
+
+```java
+entityManager
+    .unwrap( Session.class )
+    .enableFilter( "activeAccount" )
+    .setParameter( "active", true);
+
+List<Account> accounts = entityManager.createQuery(
+    "select a from Account a", Account.class)
+.getResultList();
+
+assertEquals( 2, accounts.size());
+```
+
 
 
