@@ -151,5 +151,42 @@ WHERE
 -- binding parameter [1] as [BIGINT] - [1]
 ```
 
+如果启用筛选器，并在获取帐户集合时将`maxOrderId`设置为1，Hibernate将应用`@FilterJoinTable`子句筛选标准，我们将只获得2个`Account`实体，`order_id`值为0和1。
+
+###### 例100.遍历使用`@FilterJoinTable`映射的集合
+
+```java
+Client client = entityManager.find( Client.class, 1L );
+
+entityManager
+    .unwrap( Session.class )
+    .enableFilter( "firstAccounts" )
+    .setParameter( "maxOrderId", 1);
+
+assertEquals( 2, client.getAccounts().size());
+```
+
+```java
+SELECT
+    ca.Client_id as Client_i1_2_0_,
+    ca.accounts_id as accounts2_2_0_,
+    ca.order_id as order_id3_0_,
+    a.id as id1_0_1_,
+    a.amount as amount3_0_1_,
+    a.rate as rate4_0_1_,
+    a.account_type as account_5_0_1_
+FROM
+    Client_Account ca
+INNER JOIN
+    Account a
+ON  ca.accounts_id=a.id
+WHERE
+    ca.order_id <= ?
+    AND ca.Client_id = ?
+
+-- binding parameter [1] as [INTEGER] - [1]
+-- binding parameter [2] as [BIGINT] - [1]
+```
+
 
 
