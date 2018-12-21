@@ -46,7 +46,7 @@ public static class Location {
 }
 ```
 
-可嵌入类型是值类型的另一种形式，其生命周期绑定到父实体类型，因此从父实体类型继承属性访问（有关属性访问的详细信息，请参阅访问策略）。
+可嵌入类型是值类型的另一种形式，其生命周期绑定到父实体类型，因此从父实体类型继承属性访问（有关属性访问的详细信息，请参阅[访问策略](http://docs.jboss.org/hibernate/orm/current/userguide/html_single/Hibernate_User_Guide.html#access-embeddable-types)）。
 
 可嵌入类型可以由基本值以及关联组成，但需要注意的是，当用作集合元素时，它们不能定义集合本身。
 
