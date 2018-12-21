@@ -242,5 +242,53 @@ CREATE TABLE repository_properties (
 )
 ```
 
+要查看`@ManyToAny`注解的实际效果，请考虑下面的示例。
+
+如果我们持久化`IntegerProperty`和`StringProperty`实体，并将二者与`PropertyRepository`父实体关联，Hibernate将生成以下SQL查询：
+
+###### 例109.`@ManyToAny`映射持久化示例
+
+```java
+IntegerProperty ageProperty = new IntegerProperty();
+ageProperty.setId( 1L );
+ageProperty.setName( "age" );
+ageProperty.setValue( 23 );
+
+session.persist( ageProperty );
+
+StringProperty nameProperty = new StringProperty();
+nameProperty.setId( 1L );
+nameProperty.setName( "name" );
+nameProperty.setValue( "John Doe" );
+
+session.persist( nameProperty );
+
+PropertyRepository propertyRepository = new PropertyRepository();
+propertyRepository.setId( 1L );
+
+propertyRepository.getProperties().add( ageProperty );
+propertyRepository.getProperties().add( nameProperty );
+
+session.persist( propertyRepository );
+```
+
+```java
+INSERT INTO integer_property
+       ( "name", "value", id )
+VALUES ( 'age', 23, 1 )
+
+INSERT INTO string_property
+       ( "name", "value", id )
+VALUES ( 'name', 'John Doe', 1 )
+
+INSERT INTO property_repository ( id )
+VALUES ( 1 )
+
+INSERT INTO repository_properties
+    ( repository_id , property_type , property_id )
+VALUES
+    ( 1 , 'I' , 1 )
+```
+
 
 
