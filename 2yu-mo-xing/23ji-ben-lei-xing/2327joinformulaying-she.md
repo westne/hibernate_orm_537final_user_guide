@@ -54,5 +54,42 @@ CREATE TABLE users (
 )
 ```
 
+`User`实体中的国家关联由`phoneNumber`属性提供的国家标识符映射。
+
+考虑到我们有以下实体：
+
+###### 例112.`@JoinFormula`映射使用
+
+```java
+Country US = new Country();
+US.setId( 1 );
+US.setName( "United States" );
+
+Country Romania = new Country();
+Romania.setId( 40 );
+Romania.setName( "Romania" );
+
+doInJPA( this::entityManagerFactory, entityManager -> {
+	entityManager.persist( US );
+	entityManager.persist( Romania );
+} );
+
+doInJPA( this::entityManagerFactory, entityManager -> {
+	User user1 = new User( );
+	user1.setId( 1L );
+	user1.setFirstName( "John" );
+	user1.setLastName( "Doe" );
+	user1.setPhoneNumber( "+1-234-5678" );
+	entityManager.persist( user1 );
+
+	User user2 = new User( );
+	user2.setId( 2L );
+	user2.setFirstName( "Vlad" );
+	user2.setLastName( "Mihalcea" );
+	user2.setPhoneNumber( "+40-123-4567" );
+	entityManager.persist( user2 );
+} );
+```
+
 
 
