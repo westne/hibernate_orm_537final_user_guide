@@ -40,9 +40,41 @@ public static class Account {
 }
 ```
 
-注意，`active`属性被映射到`active_status`列。
+> 注意，`active`属性被映射到`active_status`列。
+>
+> 此映射是为了显示`@Filter`条件使用SQL条件而不是JPQL筛选谓词。
 
-此映射是为了显示`@Filter`条件使用SQL条件而不是JPQL筛选谓词。
+如前所述，我们还可以对集合应用`@Filter`注释，如客户端实体所示：
+
+###### 例91.`@Filter`映射集合级使用
+
+```java
+@Entity(name = "Client")
+public static class Client {
+
+    @Id
+    private Long id;
+
+    private String name;
+
+    @OneToMany(
+        mappedBy = "client",
+        cascade = CascadeType.ALL
+    )
+    @Filter(
+        name="activeAccount",
+        condition="active_status = :active"
+    )
+    private List<Account> accounts = new ArrayList<>( );
+
+    //Getters and setters omitted for brevity
+
+    public void addAccount(Account account) {
+        account.setClient( this );
+        this.accounts.add( account );
+    }
+}
+```
 
 
 
