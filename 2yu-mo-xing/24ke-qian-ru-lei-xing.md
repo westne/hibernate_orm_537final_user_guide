@@ -14,37 +14,39 @@
 @Embeddable
 public static class Publisher {
 
-	private String name;
+    private String name;
 
-	private Location location;
+    private Location location;
 
-	public Publisher(String name, Location location) {
-		this.name = name;
-		this.location = location;
-	}
+    public Publisher(String name, Location location) {
+        this.name = name;
+        this.location = location;
+    }
 
-	private Publisher() {}
+    private Publisher() {}
 
-	//Getters and setters are omitted for brevity
+    //Getters and setters are omitted for brevity
 }
 
 @Embeddable
 public static class Location {
 
-	private String country;
+    private String country;
 
-	private String city;
+    private String city;
 
-	public Location(String country, String city) {
-		this.country = country;
-		this.city = city;
-	}
+    public Location(String country, String city) {
+        this.country = country;
+        this.city = city;
+    }
 
-	private Location() {}
+    private Location() {}
 
-	//Getters and setters are omitted for brevity
+    //Getters and setters are omitted for brevity
 }
 ```
 
+可嵌入类型是值类型的另一种形式，其生命周期绑定到父实体类型，因此从父实体类型继承属性访问（有关属性访问的详细信息，请参阅访问策略）。
 
+可嵌入类型可以由基本值以及关联组成，但需要注意的是，当用作集合元素时，它们不能定义集合本身。
 
