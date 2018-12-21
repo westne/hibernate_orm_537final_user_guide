@@ -1,4 +1,6 @@
-`@Filter`注解是使用自定义SQL标准筛选实体或集合的另一种方法。与@Where注解不同，@Filter允许在运行时参数化筛选子句。
+```
+@Filter注解是使用自定义SQL标准筛选实体或集合的另一种方法。与@Where注解不同，@Filter允许在运行时参数化筛选子句。
+```
 
 现在，考虑到我们有以下Account实体：
 
@@ -139,6 +141,18 @@ List<Account> accounts = entityManager.createQuery(
 .getResultList();
 
 assertEquals( 3, accounts.size());
+```
+
+```java
+SELECT
+    a.id as id1_0_,
+    a.active_status as active2_0_,
+    a.amount as amount3_0_,
+    a.client_id as client_i6_0_,
+    a.rate as rate4_0_,
+    a.account_type as account_5_0_
+FROM
+    Account a
 ```
 
 
