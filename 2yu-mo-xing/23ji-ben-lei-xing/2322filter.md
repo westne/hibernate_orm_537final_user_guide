@@ -133,7 +133,7 @@ VALUES (true, 250.0, 1, 0.0105, 'DEBIT', 3)
 
 默认情况下，在不显式启用筛选器的情况下，Hibernate将获取所有`Account`实体。
 
-###### 例93.在不激活`@Filter`的情况下查询映射的实体
+###### 例93.查询不激活`@Filter`映射的实体
 
 ```java
 List<Account> accounts = entityManager.createQuery(
