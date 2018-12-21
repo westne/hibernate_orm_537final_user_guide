@@ -104,5 +104,26 @@ CREATE TABLE property_holder (
 )
 ```
 
+如您所见，有两列用于引用`Property`实例：`property_id`和`property_type`。`property_id`用于匹配`string_property`或`integer_property`表的`id`列，而`property_type`用于匹配`string_property`或`integer_property`表。
+
+表解析映射由`metaDef`属性定义，该属性引用`@AnyMetaDef`映射。虽然`@AnyMetaDef`映射可以紧挨`@Any`注释设置，但是重用它是一个很好的实践，因此在类或包级别配置它是有意义的。
+
+`package-info.java`包含`@AnyMetaDef`映射：
+
+###### 例105.`@Any`映射使用
+
+```java
+@AnyMetaDef( name= "PropertyMetaDef", metaType = "string", idType = "long",
+    metaValues = {
+            @MetaValue(value = "S", targetEntity = StringProperty.class),
+            @MetaValue(value = "I", targetEntity = IntegerProperty.class)
+        }
+    )
+package org.hibernate.userguide.mapping.basic.any;
+
+import org.hibernate.annotations.AnyMetaDef;
+import org.hibernate.annotations.MetaValue;
+```
+
 
 
