@@ -77,5 +77,38 @@ alter table Book_Reader
 
 考虑到以下两个Book\_Reader条目被添加到我们的系统中：
 
-例88.`@WhereJoinTable`测试数据
+###### 例88.`@WhereJoinTable`测试数据
+
+```java
+Book book = new Book();
+book.setId( 1L );
+book.setTitle( "High-Performance Java Persistence" );
+book.setAuthor( "Vad Mihalcea" );
+entityManager.persist( book );
+
+Reader reader1 = new Reader();
+reader1.setId( 1L );
+reader1.setName( "John Doe" );
+entityManager.persist( reader1 );
+
+Reader reader2 = new Reader();
+reader2.setId( 2L );
+reader2.setName( "John Doe Jr." );
+entityManager.persist( reader2 );
+
+statement.executeUpdate(
+	"INSERT INTO Book_Reader " +
+	"	(book_id, reader_id) " +
+	"VALUES " +
+	"	(1, 1) "
+);
+statement.executeUpdate(
+	"INSERT INTO Book_Reader " +
+	"	(book_id, reader_id, created_on) " +
+	"VALUES " +
+	"	(1, 2, DATEADD( 'DAY', -10, CURRENT_TIMESTAMP() )) "
+);
+```
+
+
 
