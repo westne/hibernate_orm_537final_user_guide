@@ -71,5 +71,38 @@ public class StringProperty implements Property<String> {
 }
 ```
 
+`PropertyHolder`可以引用任何此类属性，并且由于每个`Property`都属于一个单独的表，因此需要`@Any`注释。
+
+###### 例104.`@Any`映射使用
+
+```java
+@Entity
+@Table( name = "property_holder" )
+public class PropertyHolder {
+
+    @Id
+    private Long id;
+
+    @Any(
+        metaDef = "PropertyMetaDef",
+        metaColumn = @Column( name = "property_type" )
+    )
+    @JoinColumn( name = "property_id" )
+    private Property property;
+
+    //Getters and setters are omitted for brevity
+
+}
+```
+
+```java
+CREATE TABLE property_holder (
+    id BIGINT NOT NULL,
+    property_type VARCHAR(255),
+    property_id BIGINT,
+    PRIMARY KEY ( id )
+)
+```
+
 
 
