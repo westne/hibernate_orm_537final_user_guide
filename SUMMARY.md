@@ -45,4 +45,5 @@
     * [2.3.29.@Target映射](2yu-mo-xing/23ji-ben-lei-xing/2329targetying-she.md)
     * [2.3.30.@Parent映射](2yu-mo-xing/23ji-ben-lei-xing/2330parentying-she.md)
   * [2.4.可嵌入类型](2yu-mo-xing/24ke-qian-ru-lei-xing.md)
+    * [2.4.1.组件/嵌入式](2yu-mo-xing/24ke-qian-ru-lei-xing/241zu-4ef6-qian-ru-shi.md)
 
